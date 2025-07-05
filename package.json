@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "lint:eslint": "eslint 'src/**/*.{ts,tsx,js,jsx}' --no-error-on-unmatched-pattern",
+    "lint:stylelint": "stylelint 'src/**/*.{css,scss}' --allow-empty-input",
+    "lint": "pnpm lint:eslint && pnpm lint:stylelint",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,scss,css,md}' --ignore-unknown --no-error-on-unmatched-pattern"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +33,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "stylelint": "^16.21.1",
     "stylelint-prettier": "^5.0.3",
