@@ -1,0 +1,98 @@
+@use '../styles/variables.module' as vars;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-onest: initial;
+  --font-spectral: initial;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-onest), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+//Fonts
+
+h1 {
+  font-family: var(--font-spectral), serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 3.5rem;
+}
+
+h2 {
+  font-family: var(--font-spectral-semibold), serif;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+}
+
+h3 {
+  font-family: var(--font-spectral-semibold), serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+h4 {
+  font-family: var(--font-spectral-semibold), serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+p {
+  font-family: var(--font-onest), sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
+.text {
+  font-family: var(--font-onest), sans-serif;
+  font-weight: 400;
+
+  &--small {
+    font-size: 0.825rem;
+    line-height: 1rem;
+  }
+
+  &--muted {
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+  }
+}
