@@ -1,4 +1,7 @@
 @use '../styles/variables.module' as vars;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
