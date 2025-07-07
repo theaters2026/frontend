@@ -36,7 +36,7 @@ export const Card = ({
           />
         </figure>
         <span className={styles['card__price']}>{price} р.</span>
-        <span className={styles['card__age-rating']}>{ageRating}+</span>
+        <span className={styles['card__age-rating']}>{ageRating}</span>
       </header>
       <main className={styles['card__content']}>
         <h3 className={styles['card__title']}>{title}</h3>
