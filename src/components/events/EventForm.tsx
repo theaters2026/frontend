@@ -7,7 +7,18 @@ import { Form } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card } from '../homepage/card/Card'
-import { type EventFormSchema, eventFormSchema } from './event-form.schema'
+import {
+  ageRatings,
+  type EventFormSchema,
+  eventFormSchema,
+} from './event-form.schema'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export const EventForm = () => {
   const form = useForm<EventFormSchema>({
@@ -18,7 +29,7 @@ export const EventForm = () => {
       date: '',
       location: '',
       theater: '',
-      ageRating: '12',
+      ageRating: '12+',
       imageSrc: '',
       imageAlt: '',
     },
@@ -65,16 +76,23 @@ export const EventForm = () => {
 
             <div className="space-y-2">
               <Label htmlFor="ageRating">Возрастной рейтинг</Label>
-              <Input
-                id="ageRating"
-                placeholder="12+"
-                {...form.register('ageRating')}
-              />
-              {form.formState.errors.ageRating && (
-                <p className="text-sm text-destructive">
-                  {form.formState.errors.ageRating.message}
-                </p>
-              )}
+              <Select
+                onValueChange={(value: EventFormSchema['ageRating']) =>
+                  form.setValue('ageRating', value)
+                }
+                defaultValue={form.watch('ageRating')}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Выберите рейтинг" />
+                </SelectTrigger>
+                <SelectContent>
+                  {ageRatings.map((rating) => (
+                    <SelectItem key={rating} value={rating}>
+                      {rating}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
           <div className="space-y-2">
