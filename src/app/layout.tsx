@@ -8,14 +8,21 @@ const spectral = localFont({
       path: '../../public/fonts/spectral/spectral-bold.woff2',
       weight: '700',
       style: 'normal',
-    },
+    }
+  ],
+  variable: '--font-spectral',
+  display: 'swap',
+})
+
+const spectralSemiBold = localFont({
+  src: [
     {
       path: '../../public/fonts/spectral/spectral-semibold.woff2',
       weight: '600',
       style: 'normal',
     },
   ],
-  variable: '--font-spectral',
+  variable: '--font-spectral-semibold',
   display: 'swap',
 })
 
@@ -43,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${spectral.variable} ${onest.variable}`}>
+      <body className={`${spectral.variable} ${spectralSemiBold.variable} ${onest.variable}`}>
         {children}
       </body>
     </html>
