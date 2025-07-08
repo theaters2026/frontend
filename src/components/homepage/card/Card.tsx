@@ -30,8 +30,8 @@ export const Card = ({
           <Image
             src={imageSrc}
             alt={imageAlt}
-            width={10}
-            height={10}
+            width={399}
+            height={225}
             className={styles['card__image']}
           />
         </figure>
