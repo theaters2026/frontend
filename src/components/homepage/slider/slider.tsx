@@ -1,10 +1,8 @@
 'use client'
-
 import styles from './slider.module.scss'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import Image from 'next/image'
 
 export type SliderType = {
   title: string
@@ -19,27 +17,25 @@ interface SliderProps {
   events: SliderType[]
 }
 
-export const Slider = ( {events}: SliderProps) => {
+export const Slider = ({ events }: SliderProps) => {
   return (
     <div>
-      <Swiper 
+      <Swiper
         className={styles['slider']}
         spaceBetween={0}
         slidesPerView={1}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        {events.map((item, index) =>
-          <SwiperSlide
-              className={styles['slider__slide']}
-          > 
-            <Image 
+        {events.map((item, index) => (
+          <SwiperSlide className={styles['slider__slide']}>
+            <Image
               src={item.imageSrc}
               alt={item.imageAlt}
-              width={100}
-              height={100}
+              width={1440}
+              height={1024}
               className={styles['slider__slide__image']}
-            /> 
+            />
             <div className={styles['slider__slide__info']}>
               <h1> {item.title}</h1>
               <h2> {item.date}</h2>
@@ -49,7 +45,7 @@ export const Slider = ( {events}: SliderProps) => {
               <h3> {item.price} p. </h3>
             </div>
           </SwiperSlide>
-        )}
+        ))}
       </Swiper>
     </div>
   )
