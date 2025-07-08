@@ -1,0 +1,42 @@
+@use '@/styles/variables.module' as vars;
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  min-width: 100vw;
+  min-height: 100vh;
+
+  &__slide {
+    max-height: 100vh;
+
+    &__image {
+      position: relative;
+      min-width: 100vw;
+    }
+
+    &__info {
+      position: absolute;
+      bottom: 10%;
+      left: 5%;
+      color: vars.$primary-color-100;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+    }
+
+    &__price {
+      position: absolute;
+      bottom: 10%;
+      right: 5%;
+      background-color: vars.$secondary-color-800;
+      color: vars.$primary-color-100;
+      border-radius: 16px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+  }
+}
