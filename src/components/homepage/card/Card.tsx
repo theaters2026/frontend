@@ -38,7 +38,7 @@ export const Card = ({
         <span className={styles['card__price']}>{price} р.</span>
         <span className={styles['card__age-rating']}>{ageRating}</span>
       </header>
-      <main className={styles['card__content']}>
+      <div className={styles['card__content']}>
         <h3 className={styles['card__title']}>{title}</h3>
         <div className={styles['card__meta']}>
           <div
@@ -62,7 +62,7 @@ export const Card = ({
             </span>
           </div>
         </div>
-      </main>
+      </div>
       <footer className={styles['card__footer']}>
         <Button className={styles['card__button']} size="md">
           Купить билет
