@@ -23,6 +23,21 @@ export const Card = ({
   imageSrc,
   imageAlt,
 }: CardProps) => {
+  const getDateTimeValue = (dateStr: string): string => {
+    try {
+      if (dateStr.includes('.')) {
+        const [datePart] = dateStr.split(' в ')
+        const [day, month, year] = datePart.split('.')
+        return new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
+          .toISOString()
+          .split('T')[0]
+      }
+      return new Date(dateStr).toISOString().split('T')[0]
+    } catch {
+      return dateStr
+    }
+  }
+
   return (
     <article className={styles['card']}>
       <header className={styles['card__header']}>
@@ -49,7 +64,7 @@ export const Card = ({
             </span>
             <time
               className={`${styles['card__date']} text--small`}
-              dateTime={date}
+              dateTime={getDateTimeValue(date)}
             >
               {date}
             </time>
