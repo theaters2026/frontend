@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.scss'
 import localFont from 'next/font/local'
+import { Provider } from 'react-redux'
+import { store } from '@/store/store'
+import { ReduxProvider } from '@/app/ReduxProvider'
 
 const spectral = localFont({
   src: [
@@ -53,7 +56,7 @@ export default function RootLayout({
       <body
         className={`${spectral.variable} ${spectralSemiBold.variable} ${onest.variable}`}
       >
-        {children}
+        <ReduxProvider children={children} />
       </body>
     </html>
   )
