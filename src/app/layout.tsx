@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.scss'
 import localFont from 'next/font/local'
+import { Provider } from 'react-redux'
+import { store } from '@/store/store'
+import { ReduxProvider } from '@/app/ReduxProvider'
 
 const spectral = localFont({
   src: [
@@ -8,7 +11,7 @@ const spectral = localFont({
       path: '../../public/fonts/spectral/spectral-bold.woff2',
       weight: '700',
       style: 'normal',
-    }
+    },
   ],
   variable: '--font-spectral',
   display: 'swap',
@@ -50,8 +53,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${spectral.variable} ${spectralSemiBold.variable} ${onest.variable}`}>
-        {children}
+      <body
+        className={`${spectral.variable} ${spectralSemiBold.variable} ${onest.variable}`}
+      >
+        <ReduxProvider children={children} />
       </body>
     </html>
   )

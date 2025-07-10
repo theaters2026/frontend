@@ -4,17 +4,10 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: vars.$primary-color-100;
+  --foreground: vars.$primary-color-900;
   --font-onest: initial;
   --font-spectral: initial;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 html,
@@ -44,7 +37,7 @@ a {
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    color-scheme: white;
   }
 }
 
@@ -90,7 +83,7 @@ p {
   font-weight: 400;
 
   &--small {
-    font-size: 0.825rem;
+    font-size: 0.875rem;
     line-height: 1rem;
   }
 
@@ -100,12 +93,10 @@ p {
   }
 }
 
-
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: vars.$primary-color-100;
+    --foreground: vars.$primary-color-900;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -130,11 +121,7 @@ p {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
-
 }
-
-
-
 
 @layer base {
   * {
