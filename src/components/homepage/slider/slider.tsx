@@ -1,8 +1,10 @@
 'use client'
+
 import styles from './slider.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import Image from 'next/image'
+import { useLayoutEffect, useState } from 'react'
 
 export type SliderType = {
   title: string
@@ -18,6 +20,12 @@ interface SliderProps {
 }
 
 export const Slider = ({ events }: SliderProps) => {
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [windowHeight, setWindowHeight] = useState(0)
+  useLayoutEffect(() => {
+    setWindowWidth(window.screen.width)
+    setWindowHeight(window.screen.height)
+  })
   return (
     <div>
       <Swiper
@@ -32,9 +40,8 @@ export const Slider = ({ events }: SliderProps) => {
             <Image
               src={item.imageSrc}
               alt={item.imageAlt}
-              width={1440}
-              height={1024}
-              className={styles['slider__slide__image']}
+              width={windowWidth}
+              height={windowHeight}
             />
             <div className={styles['slider__slide__info']}>
               <h1> {item.title}</h1>
