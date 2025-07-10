@@ -3,11 +3,46 @@
 .slider {
   position: relative;
   overflow: hidden;
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  height: 100vh;
+
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
+    color: vars.$primary-color-100;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+
+    &:after {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
 
   &__slide {
-    max-height: 100vh;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+                      to bottom,
+                      rgba(0, 0, 0, 0.3) 0%,
+                      rgba(0, 0, 0, 0.1) 50%,
+                      rgba(0, 0, 0, 0.6) 100%
+      );
+      z-index: 1;
+    }
 
     &__info {
       position: absolute;
@@ -17,6 +52,16 @@
       text-align: left;
       display: flex;
       flex-direction: column;
+      z-index: 2;
+      max-width: 50%;
+
+      h1 {
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        margin-bottom: 0.5rem;
+      }
     }
 
     &__price {
@@ -26,8 +71,65 @@
       background-color: vars.$secondary-color-800;
       color: vars.$primary-color-100;
       border-radius: 16px;
-      padding: 20px 10px;
+      padding: 20px 30px;
+      z-index: 2;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
+  }
 
+  @media (max-width: 768px) {
+    height: 300px;
+
+    &__slide {
+      height: 300px;
+
+      &__info {
+        max-width: 60%;
+        bottom: 5%;
+        left: 3%;
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h2 {
+          font-size: 1rem;
+        }
+      }
+
+      &__price {
+        bottom: 5%;
+        right: 3%;
+        padding: 15px 20px;
+
+        h3 {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__slide {
+      &__info {
+        max-width: 70%;
+
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        h2 {
+          font-size: 0.9rem;
+        }
+      }
+
+      &__price {
+        padding: 10px 15px;
+
+        h3 {
+          font-size: 1rem;
+        }
+      }
+    }
   }
 }
