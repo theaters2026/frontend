@@ -4,11 +4,12 @@
 ![React](https://img.shields.io/badge/React-19-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?logo=typescript)
 ![Redux](https://img.shields.io/badge/Redux-5.0-purple?logo=redux)
+![Tailwind](https://img.shields.io/badge/Tailwind-3.4-blue?logo=tailwindcss)
+
 
 ## 📦 Установка
 
 ```bash
-
 git clone https://gitverse.ru/studentlabs/theater_platform_client
 cd theater_platform_client
 pnpm install
@@ -45,20 +46,26 @@ pnpm install
 
 ```
 src/
-├── app/                # Роутинг Next.js
-├── components/         # UI-компоненты
-│   ├── ui/             # shadcn компоненты
-│   └── homepage/          
-├── lib/                
-│   ├── api/            # api-запросы
-│   └── utils/          # Утилиты
-├── store/              # Redux store
-│   ├── slices/         # Слайсы состояния
-│   ├── store.ts        # Конфиг хранилища
-│   ├── events/         # События
-│   └── utils/          # Утилиты для хранилища
-├── styles/             # Глобальные стили
-└── types/              # Типы TS
+├── app/                    
+│   ├── components/         # Страничные компоненты
+│   │   ├── EventCard/      # Карточка события
+│   │   ├── EventsSlider/   # Слайдер событий
+│   │   └── HomePage/       # Главная страница
+│   ├── layout.tsx          # Корневой layout
+│   └── page.tsx            # Главная страница
+├── core/                 
+│   ├── api/                # API конфигурация
+│   ├── providers/          # Провайдеры (Redux)
+│   └── store/              # Redux store
+├── shared/                
+│   ├── components/         # UI компоненты
+│   ├── lib/                # Утилиты
+│   ├── styles/             # Глобальные стили
+│   │   ├── settings/       # SCSS переменные
+│   │   │   ├── _colors.scss
+│   │   │   └── _borders.scss
+│   │   └── globals.scss    # Глобальные стили
+│   └── types/              # Глобальные типы
 ```
 
 ## 🔧 Конфигурации
