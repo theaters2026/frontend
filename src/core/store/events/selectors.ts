@@ -1,4 +1,4 @@
-import { RootState } from '@/store/store'
+import { RootState } from '@/core/store/store'
 
 export const selectEventsData = (state: RootState) => state.event.data
 export const selectEventsLoading = (state: RootState) => state.event.loading

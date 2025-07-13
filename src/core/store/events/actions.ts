@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
-import { fetchEvents } from '@/lib/api/services/events/events.service'
+import { fetchEvents } from '@/core/api/events/eventsApi'
 
 interface ErrorResponse {
   message?: string

@@ -1,5 +1,5 @@
-import { Event } from '@/types/events'
-import { instance } from '../../api'
+import { Event } from '@/shared/types/events'
+import { instance } from '../api'
 
 export const fetchEvents = async (): Promise<Event[]> => {
   try {

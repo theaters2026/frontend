@@ -1,7 +1,7 @@
-@use '@/styles/variables.module' as vars;
-
+@use '../../../shared/styles/settings/colors' as colors;
+@use '../../../shared/styles/settings/borders' as radius;
 .card {
-  border-radius: vars.$border-radius-medium;
+  border-radius: radius.$border-radius-medium;
   overflow: hidden;
   max-width: 400px;
   display: flex;
@@ -9,10 +9,10 @@
   align-items: center;
 
   &__price {
-    background-color: vars.$secondary-color-800;
-    color: vars.$primary-color-100;
+    background-color: colors.$secondary-color-800;
+    color: colors.$primary-color-100;
     position: absolute;
-    border-radius: 8px 0px 0px 0px;
+    border-radius: 8px 0 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,8 +23,8 @@
   }
 
   &__age-rating {
-    background-color: vars.$secondary-color-800;
-    color: vars.$primary-color-100;
+    background-color: colors.$secondary-color-800;
+    color: colors.$primary-color-100;
     position: absolute;
     border-radius: 0 0 0 12px;
     text-align: center;

@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import path from 'node:path'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -45,13 +46,25 @@ const nextConfig: NextConfig = {
   webpack: (config, { isServer }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': `${__dirname}/src`,
-      '@components': `${__dirname}/src/components`,
+      '@': path.resolve(__dirname, 'src'),
+      '@app': path.resolve(__dirname, 'src/app'),
+      '@app/components': path.resolve(__dirname, 'src/app/components'),
+      '@core': path.resolve(__dirname, 'src/core'),
+      '@core/api': path.resolve(__dirname, 'src/core/api'),
+      '@core/providers': path.resolve(__dirname, 'src/core/providers'),
+      '@core/store': path.resolve(__dirname, 'src/core/store'),
+      '@shared': path.resolve(__dirname, 'src/shared'),
+      '@shared/components': path.resolve(__dirname, 'src/shared/components'),
+      '@shared/lib': path.resolve(__dirname, 'src/shared/lib'),
+      '@shared/types': path.resolve(__dirname, 'src/shared/types'),
+      '@shared/styles': path.resolve(__dirname, 'src/shared/styles'),
+      '@shared/utils': path.resolve(__dirname, 'src/shared/lib/utils'),
+      '@ui': path.resolve(__dirname, 'src/shared/components/ui'),
+      '@api': path.resolve(__dirname, 'src/core/api'),
     }
 
     return config
   },
-
   trailingSlash: false,
   productionBrowserSourceMaps: true,
 }

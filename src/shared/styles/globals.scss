@@ -1,11 +1,11 @@
-@use '../styles/variables.module' as vars;
+@import './settings/_colors.scss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: vars.$primary-color-100;
-  --foreground: vars.$primary-color-900;
+  --background: $primary-color-100;
+  --foreground: $primary-color-900;
   --font-onest: initial;
   --font-spectral: initial;
 }
@@ -95,8 +95,8 @@ p {
 
 @layer base {
   :root {
-    --background: vars.$primary-color-100;
-    --foreground: vars.$primary-color-900;
+    --background: $primary-color-100;
+    --foreground: $primary-color-900;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;

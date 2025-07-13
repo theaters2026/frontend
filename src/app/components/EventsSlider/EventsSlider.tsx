@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './slider.module.scss'
+import styles from './EventsSlider.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay } from 'swiper/modules'
 import 'swiper/css'
@@ -21,7 +21,7 @@ interface SliderProps {
   events: SliderType[]
 }
 
-export const Slider = ({ events }: SliderProps) => {
+export const EventsSlider = ({ events }: SliderProps) => {
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {

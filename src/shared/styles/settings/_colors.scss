@@ -20,15 +20,6 @@ $secondary-color-700: #ba4e62;
 $secondary-color-800: #881c30;
 $secondary-color-900: #74081c;
 
-//Border-radius
-$border-radius-none: 0;
-$border-radius-extraSmall: 4px;
-$border-radius-small: 8px;
-$border-radius-medium: 10px;
-$border-radius-large: 12px;
-$border-radius-extraLarge: 20px;
-$border-radius-full: 1000px;
-
 :export {
   //Primary-Colors
   primaryColor100: var($primary-color-100);
@@ -51,13 +42,4 @@ $border-radius-full: 1000px;
   secondaryColor700: var($secondary-color-700);
   secondaryColor800: var($secondary-color-800);
   secondaryColor900: var($secondary-color-900);
-
-  //Border-radius
-  borderRadiusNone: var($border-radius-none);
-  borderRadiusExtraSmall: var($border-radius-extraSmall);
-  borderRadiusSmall: var($border-radius-small);
-  borderRadiusMedium: var($border-radius-medium);
-  borderRadiusLarge: var($border-radius-large);
-  borderRadiusExtraLarge: var($border-radius-extraLarge);
-  borderRadiusFull: var($border-radius-full);
 }

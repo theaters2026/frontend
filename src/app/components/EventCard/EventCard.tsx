@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import styles from './Card.module.scss'
+import { Button } from '@/shared/components/ui/button'
+import styles from './EventCard.module.scss'
 
 interface CardProps {
   price: string
@@ -13,7 +13,7 @@ interface CardProps {
   ageRating: string
 }
 
-export const Card = ({
+export const EventCard = ({
   price,
   title,
   date,

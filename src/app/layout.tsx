@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
-import './globals.scss'
+import '@/shared/styles/globals.scss'
 import localFont from 'next/font/local'
-import { Provider } from 'react-redux'
-import { store } from '@/store/store'
-import { ReduxProvider } from '@/app/ReduxProvider'
+import { ReduxProvider } from '@/core/providers'
 
 const spectral = localFont({
   src: [

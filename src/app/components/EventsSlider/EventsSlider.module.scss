@@ -1,5 +1,4 @@
-@use '@/styles/variables.module' as vars;
-
+@use '../../../shared/styles/settings/colors' as colors;
 .slider {
   position: relative;
   overflow: hidden;
@@ -8,7 +7,7 @@
 
   :global(.swiper-button-next),
   :global(.swiper-button-prev) {
-    color: vars.$primary-color-100;
+    color: colors.$primary-color-100;
     width: 44px;
     height: 44px;
     background: rgba(0, 0, 0, 0.5);
@@ -48,7 +47,7 @@
       position: absolute;
       bottom: 10%;
       left: 5%;
-      color: vars.$primary-color-100;
+      color: colors.$primary-color-100;
       text-align: left;
       display: flex;
       flex-direction: column;
@@ -68,8 +67,8 @@
       position: absolute;
       bottom: 10%;
       right: 5%;
-      background-color: vars.$secondary-color-800;
-      color: vars.$primary-color-100;
+      background-color: colors.$secondary-color-800;
+      color: colors.$primary-color-100;
       border-radius: 16px;
       padding: 20px 30px;
       z-index: 2;

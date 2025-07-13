@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { fetchEventData } from './actions'
-import { initialState } from '@/types/events'
+import { initialState } from '@/shared/types/events'
 
 const eventSlice = createSlice({
   name: 'event',
