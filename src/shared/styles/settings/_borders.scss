@@ -1,0 +1,19 @@
+//Border-radius
+$border-radius-none: 0;
+$border-radius-extraSmall: 4px;
+$border-radius-small: 8px;
+$border-radius-medium: 10px;
+$border-radius-large: 12px;
+$border-radius-extraLarge: 20px;
+$border-radius-full: 1000px;
+
+:export {
+  //Border-radius
+  borderRadiusNone: var($border-radius-none);
+  borderRadiusExtraSmall: var($border-radius-extraSmall);
+  borderRadiusSmall: var($border-radius-small);
+  borderRadiusMedium: var($border-radius-medium);
+  borderRadiusLarge: var($border-radius-large);
+  borderRadiusExtraLarge: var($border-radius-extraLarge);
+  borderRadiusFull: var($border-radius-full);
+}
