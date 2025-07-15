@@ -4,4 +4,7 @@ semi: false
 singleQuote: true
 bracketSpacing: true
 jsxBracketSameLine: false
+printWidth: 80
 arrowParens: always
+endOfLine: 'lf'
+insertFinalNewline: true
