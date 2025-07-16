@@ -3,13 +3,14 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '@/shared/utils'
+import { UI_CONSTANTS } from '@/shared/constants'
 
 const buttonVariants = cva(
-  `inline-flex items-center justify-center gap-10 whitespace-nowrap 
-  rounded-lg
+  `inline-flex items-center justify-center ${UI_CONSTANTS.BUTTON.GAP.DEFAULT} whitespace-nowrap 
+  ${UI_CONSTANTS.BUTTON.BORDER_RADIUS.DEFAULT}
   transition-colors 
-  disabled:pointer-events-none
-  [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0`,
+  ${UI_CONSTANTS.BUTTON.DISABLED.POINTER_EVENTS}
+  [&_svg]:${UI_CONSTANTS.BUTTON.SVG.POINTER_EVENTS} [&_svg]:${UI_CONSTANTS.BUTTON.SVG.SIZE} [&_svg]:${UI_CONSTANTS.BUTTON.SVG.SHRINK}`,
   {
     variants: {
       variant: {
@@ -17,14 +18,14 @@ const buttonVariants = cva(
           'bg-secondary-800 hover:bg-secondary-700 active:bg-secondary-900 disabled:bg-primary-200 disabled:text-secondary-900 text-primary-100',
       },
       IsIconButton: {
-        default: 'px-5 py-2.5',
+        default: UI_CONSTANTS.BUTTON.PADDING.DEFAULT,
         true: '',
       },
       size: {
-        default: 'px-5 py-2.5',
-        md: 'px-5 py-2.5',
-        lg: 'px-6 py-3',
-        icon: 'h-9 w-9',
+        default: UI_CONSTANTS.BUTTON.PADDING.DEFAULT,
+        md: UI_CONSTANTS.BUTTON.PADDING.MEDIUM,
+        lg: UI_CONSTANTS.BUTTON.PADDING.LARGE,
+        icon: UI_CONSTANTS.BUTTON.ICON_SIZE.DEFAULT,
       },
     },
     defaultVariants: {
