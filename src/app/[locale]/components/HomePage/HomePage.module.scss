@@ -68,13 +68,10 @@
     }
 
     @media (max-width: breakpoints.$breakpoint-md) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
-    @media (max-width: breakpoints.$breakpoint-sm) {
-      grid-template-columns: 1fr;
-    }
   }
 
   &__item {

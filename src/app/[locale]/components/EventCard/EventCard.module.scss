@@ -141,6 +141,10 @@
       margin-top: 0.5rem;
       padding-bottom: 12px;
     }
+    @media (max-width: 375px) {
+      flex-direction: column;
+      gap: 8px;
+    }
   }
 }
 
