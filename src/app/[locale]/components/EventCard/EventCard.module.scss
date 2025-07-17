@@ -1,0 +1,179 @@
+@use '../../../../shared/styles/settings/colors' as colors;
+@use '../../../../shared/styles/settings/borders' as radius;
+@use '../../../../shared/styles/settings/breakpoints' as breakpoints;
+
+.card {
+  border-radius: radius.$border-radius-medium;
+  overflow: hidden;
+  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: outline 0.5s ease;
+  &:hover {
+    outline: 1px solid colors.$secondary-color-800;
+  }
+  &__price {
+    background-color: colors.$secondary-color-800;
+    color: colors.$primary-color-100;
+    position: absolute;
+    border-radius: 8px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 28px;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    text-wrap: nowrap;
+  }
+
+  &__age-rating {
+    background-color: colors.$secondary-color-800;
+    color: colors.$primary-color-100;
+    position: absolute;
+    border-radius: 0 0 0 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    padding-left: 3px;
+    z-index: 1;
+  }
+
+  &__footer,
+  &__content {
+    max-width: 22.5rem;
+    width: 100%;
+
+    @media (max-width: breakpoints.$breakpoint-sm) {
+      max-width: 100%;
+      padding: 0 12px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__header {
+    max-width: 399px;
+    width: 100%;
+    max-height: 225px;
+    position: relative;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding: 0 16px;
+    flex-grow: 1;
+
+    @media (max-width: breakpoints.$breakpoint-md) {
+      margin-top: 0.75rem;
+      gap: 0.5rem;
+    }
+  }
+
+  &__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-grow: 1;
+
+    @media (max-width: breakpoints.$breakpoint-sm) {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__theater,
+  &__date,
+  &__location {
+    display: flex;
+    align-items: center;
+    max-width: 10.875rem;
+    gap: 8px;
+    text-overflow: ellipsis;
+
+    @media (max-width: breakpoints.$breakpoint-md) {
+      font-size: 13px;
+      gap: 6px;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+
+      @media (max-width: breakpoints.$breakpoint-md) {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    gap: 0.75rem;
+    text-align: center;
+    margin-top: 0.75rem;
+    padding: 0 16px 16px;
+
+    @media (max-width: breakpoints.$breakpoint-md) {
+      margin-top: 0.5rem;
+      padding-bottom: 12px;
+    }
+  }
+}
+
+.meta {
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--left {
+      align-items: flex-start;
+    }
+
+    &--right {
+      align-items: flex-end;
+      text-align: right;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    &__meta {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .meta__column {
+      &--left,
+      &--right {
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+  }
+}
