@@ -1,0 +1,28 @@
+@use '../../shared/styles/settings/colors' as colors;
+@use '../../shared/styles/settings/borders' as radius;
+
+.page {
+  &__heager {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  &__footer {
+    position: absolute;
+  }
+
+  &__footer,
+  &__content {
+    max-width: 22.5rem;
+    width: 100%;
+  }
+}
