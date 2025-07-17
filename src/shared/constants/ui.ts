@@ -1,5 +1,11 @@
 export const UI_CONSTANTS = {
   CURRENCY_SYMBOL: 'р.',
+  EVENT_DESCRIPTION_IMAGE: {
+    WIDTH: 1440,
+    HEIGHT: 924,
+  },
+  POPULAR_EVENTS_LIMIT: 3,
+  SESSIONS_LIMIT: 4,
   BUTTON: {
     PADDING: {
       DEFAULT: 'px-5 py-2.5',
