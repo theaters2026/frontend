@@ -2,18 +2,12 @@
 
 import { Button } from '@/shared/ui'
 import { useForm } from 'react-hook-form'
-import { loginFormSchema, LoginFormSchema } from './login-form.schema'
+import { loginFormSchema, LoginFormSchema } from './loginForm.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/shared/ui/form'
 import { Input } from '@/shared/ui/input'
 import { useTranslations } from 'next-intl'
-import axios, { type AxiosResponse } from 'axios'
-
-type RespType = {
-  username: string
-  password: string
-  email: string
-}
+import { login } from './api'
 
 export const LoginForm: React.FC = () => {
   const t = useTranslations('Login')
@@ -27,29 +21,7 @@ export const LoginForm: React.FC = () => {
   })
 
   const onSubmit = async (data: LoginFormSchema) => {
-    await axios
-      .post<RespType>(`http://localhost:3000/auth/login`, {
-        username: data.username,
-        password: data.password,
-        email: data.email,
-      })
-      .then((response: AxiosResponse) => {
-        console.log('Login confirm', response)
-      })
-      .catch(async (response: AxiosResponse) => {
-        await axios
-          .post<RespType>(`http://localhost:3000/auth/register`, {
-            username: data.username,
-            password: data.password,
-            email: data.email,
-          })
-          .then((response: AxiosResponse) => {
-            console.log('Login confirm', response)
-          })
-          .catch(async (response: AxiosResponse) => {
-            console.log('Login confirm', response)
-          })
-      })
+    console.log(login(data))
     console.log('Form data:', data)
   }
 
@@ -102,18 +74,6 @@ export const LoginForm: React.FC = () => {
           <div>
             <Button type="submit"> {t('buttonSubmit')} </Button>
           </div>
-          {/* <div>
-            <Button type="button" onClick={async () => {
-              await axios
-                .get<RespType>(`http://localhost:3000/api#/auth/register`)
-                .then((response: AxiosResponse) => {
-                  console.log('Login confirm')
-                })
-                .catch(async (response: AxiosResponse) => {
-                  console.log('Login confirm')
-                })
-            }}> O </Button>
-          </div> */}
         </form>
       </Form>
     </div>
