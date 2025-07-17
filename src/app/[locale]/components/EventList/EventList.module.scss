@@ -1,0 +1,27 @@
+@use '../../../../shared/styles/settings/breakpoints' as breakpoints;
+
+.events-list {
+  display: grid;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: 1fr;
+
+  &__item {
+    display: flex;
+    height: 100%;
+  }
+
+  @media (min-width: breakpoints.$breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: breakpoints.$breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: breakpoints.$breakpoint-md) {
+    gap: 16px;
+  }
+}
