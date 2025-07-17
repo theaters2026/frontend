@@ -1,0 +1,16 @@
+@use '../../../../../../shared/styles/settings/colors' as colors;
+@use '../../../../../../shared/styles/settings/breakpoints' as breakpoints;
+.event-info {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid colors.$primary-color-800;
+    padding-block: 20px;
+    @media (max-width: breakpoints.$breakpoint-lg) {
+      padding-inline: 0.5rem;
+    }
+  }
+  &__description {
+    margin-top: 20px;
+  }
+}
