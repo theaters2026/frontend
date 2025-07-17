@@ -5,6 +5,18 @@ import createNextIntlPlugin from 'next-intl/plugin'
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'store.rambler.ru',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+
+  },
+
   webpack: (config, { isServer }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
