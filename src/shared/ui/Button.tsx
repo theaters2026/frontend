@@ -9,7 +9,6 @@ const buttonVariants = cva(
   `inline-flex items-center justify-center ${UI_CONSTANTS.BUTTON.GAP.DEFAULT} whitespace-nowrap 
   ${UI_CONSTANTS.BUTTON.BORDER_RADIUS.DEFAULT}
   transition-colors 
-  ${UI_CONSTANTS.BUTTON.DISABLED.POINTER_EVENTS}
   [&_svg]:${UI_CONSTANTS.BUTTON.SVG.POINTER_EVENTS} [&_svg]:${UI_CONSTANTS.BUTTON.SVG.SIZE} [&_svg]:${UI_CONSTANTS.BUTTON.SVG.SHRINK}`,
   {
     variants: {
