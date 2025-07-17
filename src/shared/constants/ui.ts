@@ -1,5 +1,7 @@
 export const UI_CONSTANTS = {
+  EVENT_CARD_IMAGE: { WIDTH: 399, HEIGHT: 225 },
   CURRENCY_SYMBOL: 'р.',
+  POPULAR_EVENTS_LIMIT: 3,
   BUTTON: {
     PADDING: {
       DEFAULT: 'px-5 py-2.5',
