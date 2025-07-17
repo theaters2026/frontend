@@ -4,6 +4,8 @@ import { routing } from '@/shared/i18n/routing'
 import type { Metadata } from 'next'
 import '@/shared/styles/globals.scss'
 import localFont from 'next/font/local'
+import { ReduxProvider } from '@/core/providers'
+import { store } from '@/core/store/store'
 
 const spectral = localFont({
   src: [
@@ -80,7 +82,9 @@ export default async function Layout({
       <body
         className={`${spectral.variable} ${spectralSemiBold.variable} ${onest.variable}`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <ReduxProvider>{children}</ReduxProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
