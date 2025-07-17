@@ -1,5 +1,20 @@
 {
   "HomePage": {
     "title": "Platform of independent theatres"
+  },
+  "EventHeader": {
+    "searchPlaceholder": "Search...",
+    "title": "platform of independent theatres"
+  },
+  "EventDetails": {
+    "detailInfo": "Event Details",
+    "upcomingSessions": "Upcoming Sessions",
+    "buyTicket": "Buy Ticket",
+    "minutes": "minutes",
+    "dateNotSpecified": "Date not specified",
+    "locationNotSpecified": "Location not specified",
+    "loading": "Loading...",
+    "notFound": "Event not found",
+    "back": "Back"
   }
 }

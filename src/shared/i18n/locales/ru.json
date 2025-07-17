@@ -1,5 +1,20 @@
 {
   "HomePage": {
     "title": "Платформа независимых театров"
+  },
+  "EventHeader": {
+    "searchPlaceholder": "Поиск...",
+    "title": "платформа независимых театров"
+  },
+  "EventDetails": {
+    "detailInfo": "Подробная информация",
+    "upcomingSessions": "Ближайшие сеансы",
+    "buyTicket": "Купить билет",
+    "minutes": "минут",
+    "dateNotSpecified": "Дата не указана",
+    "locationNotSpecified": "Место не указано",
+    "loading": "Загрузка...",
+    "notFound": "Событие не найдено",
+    "back": "Назад"
   }
 }
