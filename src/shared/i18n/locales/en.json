@@ -1,5 +1,25 @@
 {
   "HomePage": {
-    "title": "Platform of independent theatres"
+    "title": "Platform of independent theatres",
+    "sections": {
+      "popular": {
+        "title": "Popular"
+      },
+      "affiche": {
+        "title": "Affiche"
+      }
+    }
+  },
+  "EventCard": {
+    "details": "Details",
+    "buyTicket": "Buy ticket",
+    "currency": "RUB"
+  },
+  "Common": {
+    "defaultValues": {
+      "dateNotSpecified": "Date not specified",
+      "locationNotSpecified": "Location not specified",
+      "theaterNotSpecified": "Theater not specified"
+    }
   }
 }

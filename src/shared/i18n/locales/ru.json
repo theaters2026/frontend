@@ -1,5 +1,25 @@
 {
   "HomePage": {
-    "title": "Платформа независимых театров"
+    "title": "Платформа независимых театров",
+    "sections": {
+      "popular": {
+        "title": "Популярное"
+      },
+      "affiche": {
+        "title": "Афиша"
+      }
+    }
+  },
+  "EventCard": {
+    "details": "Подробнее",
+    "buyTicket": "Купить билет",
+    "currency": "р."
+  },
+  "Common": {
+    "defaultValues": {
+      "dateNotSpecified": "Дата не указана",
+      "locationNotSpecified": "Место не указано",
+      "theaterNotSpecified": "Театр не указан"
+    }
   }
 }
