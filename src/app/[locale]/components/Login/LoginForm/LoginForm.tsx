@@ -7,7 +7,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/shared/ui/form'
 import { Input } from '@/shared/ui/input'
 import { useTranslations } from 'next-intl'
-import { login } from './api'
+import { login } from './apiLogin'
+import { saveLoginTokens } from './cookieLogin'
 
 export const LoginForm: React.FC = () => {
   const t = useTranslations('Login')
@@ -21,7 +22,7 @@ export const LoginForm: React.FC = () => {
   })
 
   const onSubmit = async (data: LoginFormSchema) => {
-    console.log(login(data))
+    console.log(saveLoginTokens((await login(data)).data))
     console.log('Form data:', data)
   }
 

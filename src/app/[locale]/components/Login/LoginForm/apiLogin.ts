@@ -3,15 +3,17 @@
 import axios, { type AxiosResponse } from 'axios'
 import { LoginFormSchema } from './loginForm.schema'
 
-type RespType = {
+type AuthType = {
   username: string
   password: string
   email: string
 }
 
-export const register = async (data: LoginFormSchema) => {
-  await axios
-    .post<RespType>(`http://localhost:3000/auth/register`, {
+const API = process.env['NEXT_PUBLIC_LOCAL_API_URL']
+
+const register = async (data: LoginFormSchema) => {
+  return await axios
+    .post<AuthType>(`${API}/auth/register`, {
       username: data.username,
       password: data.password,
       email: data.email,
@@ -25,8 +27,8 @@ export const register = async (data: LoginFormSchema) => {
 }
 
 export const login = async (data: LoginFormSchema) => {
-  await axios
-    .post<RespType>(`http://localhost:3000/auth/login`, {
+  return await axios
+    .post<AuthType>(`${API}/auth/login`, {
       username: data.username,
       password: data.password,
       email: data.email,
@@ -35,6 +37,6 @@ export const login = async (data: LoginFormSchema) => {
       return response
     })
     .catch(async (response: AxiosResponse) => {
-      return register(data)
+      return await register(data)
     })
 }
