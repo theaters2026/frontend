@@ -1,57 +1,53 @@
-import { formatDate, roundToInteger } from '@/shared/utils'
+import { Show, EventCardData } from '@/shared/types/event'
+import { parseDetailedUrl } from '@/shared/utils/url'
 import { UI_CONSTANTS } from '@/shared/constants'
-import { ShowItem } from '@/shared/types/event'
-
-export interface EventCardData {
-  id: number
-  title: string
-  price: number
-  date: string
-  location: string
-  theater: string
-  imageSrc: string
-  imageAlt: string
-  ageRating: string
-}
 
 export class EventService {
-  static transformShowToCardData(show: ShowItem): EventCardData {
-    const firstEvent =
-      show.events && show.events.length > 0 ? show.events[0] : null
-
-    return {
-      id: show.id,
-      title: show.name,
-      price: show.min_price ? roundToInteger(parseFloat(show.min_price)) : 0,
-      date: firstEvent?.date ? formatDate(firstEvent.date) : 'dateNotSpecified',
-      location: firstEvent?.address || 'locationNotSpecified',
-
-      theater: firstEvent?.building?.name || 'theaterNotSpecified',
-
-      imageSrc: show.image || '',
-      imageAlt: show.name,
-      ageRating: `${show.age_limit || firstEvent?.age_limit || 0}+`,
-    }
+  static getPopularShows(shows: Show[]): Show[] {
+    return shows.slice(0, UI_CONSTANTS.POPULAR_EVENTS_LIMIT)
   }
 
-  static getUniqueShows(shows: ShowItem[]): ShowItem[] {
-    if (!shows || shows.length === 0) return []
-
+  static getUniqueShows(shows: Show[]): Show[] {
     const uniqueShows = shows.filter(
       (show, index, self) => index === self.findIndex((s) => s.id === show.id)
     )
-
     return uniqueShows
   }
 
-  static getPopularShows(shows: ShowItem[]): ShowItem[] {
-    const uniqueShows = this.getUniqueShows(shows)
-    return uniqueShows.slice(0, UI_CONSTANTS.POPULAR_EVENTS_LIMIT)
-  }
+  static transformShowsToCardData(shows: Show[]): EventCardData[] {
+    return shows.map((show) => {
+      const parsedUrl = parseDetailedUrl(show.detailed_url)
+      const cityId =
+        show.events && show.events.length > 0
+          ? show.events[0].cityId
+          : undefined
 
-  static transformShowsToCardData(shows: ShowItem[]): EventCardData[] {
-    if (!shows || shows.length === 0) return []
+      const eventCardData: EventCardData = {
+        id: show.externalId,
+        title: show.name,
+        imageSrc: show.image,
+        imageAlt: show.name,
+        price: show.minPrice ? parseInt(show.minPrice) : 0,
+        date: show.events && show.events.length > 0 ? show.events[0].date : '',
+        location:
+          show.events && show.events.length > 0
+            ? show.events[0].address || ''
+            : '',
+        theater:
+          show.events && show.events.length > 0
+            ? show.events[0].building?.name || ''
+            : '',
+        ageRating: show.ageLimit ? show.ageLimit.toString() + '+' : '0+',
+        detailedUrl: show.detailed_url || null,
+        eventId: String(
+          parsedUrl?.eventId ||
+            (typeof show.id === 'string' ? parseInt(show.id) : show.id)
+        ),
+        cityId: cityId,
+        showTypeId: parseInt(show.type_num),
+      }
 
-    return shows.map(this.transformShowToCardData)
+      return eventCardData
+    })
   }
 }

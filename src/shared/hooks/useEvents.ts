@@ -1,46 +1,53 @@
+import { useEffect, useMemo } from 'react'
+import { Show, EventCardData } from '@/shared/types/event'
+import { ParsedEventData } from '@/shared/utils/url'
 import { useAppDispatch, useAppSelector } from '@/core/store/utils/storeUtils'
-import { useEffect } from 'react'
-import { fetchEventData } from '@/core/store/events/eventsActions'
-import {
-  selectEventsData,
-  selectEventsLoading,
-  selectEventsError,
-} from '@/core/store/events/eventsSlice'
-import { EventService, EventCardData } from '@/core/services/eventService'
+import { fetchEventData } from '@/core/store/events'
+import { EventService } from '@/core/services/eventService'
 
-export interface UseEventsReturn {
+interface UseEventsReturn {
+  shows: Array<Show & { parsedData: ParsedEventData | null }>
   popularEvents: EventCardData[]
   allEvents: EventCardData[]
   loading: boolean
   error: string | null
   refetch: () => void
+  totalCount: number
+  originalCount: number
 }
 
 export const useEvents = (): UseEventsReturn => {
   const dispatch = useAppDispatch()
-  const shows = useAppSelector(selectEventsData)
-  const loading = useAppSelector(selectEventsLoading)
-  const error = useAppSelector(selectEventsError)
+  const { shows, loading, error, totalCount, originalCount } = useAppSelector(
+    (state) => state.events
+  )
 
-  const refetch = () => {
+  const fetchEvents = () => {
     dispatch(fetchEventData())
   }
 
   useEffect(() => {
-    dispatch(fetchEventData())
-  }, [dispatch])
+    fetchEvents()
+  }, [])
 
-  const popularShowsData = EventService.getPopularShows(shows)
-  const allShowsData = EventService.getUniqueShows(shows)
+  const popularEvents = useMemo(() => {
+    const popularShows = EventService.getPopularShows(shows)
+    return EventService.transformShowsToCardData(popularShows)
+  }, [shows])
 
-  const popularCards = EventService.transformShowsToCardData(popularShowsData)
-  const allCards = EventService.transformShowsToCardData(allShowsData)
+  const allEvents = useMemo(() => {
+    const uniqueShows = EventService.getUniqueShows(shows)
+    return EventService.transformShowsToCardData(uniqueShows)
+  }, [shows])
 
   return {
-    popularEvents: popularCards,
-    allEvents: allCards,
+    shows,
+    popularEvents,
+    allEvents,
     loading,
     error,
-    refetch,
+    refetch: fetchEvents,
+    totalCount,
+    originalCount,
   }
 }

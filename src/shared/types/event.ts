@@ -1,25 +1,9 @@
-export interface EventCardData {
-  id: number
-  title: string
-  date: string
-  location: string
-  theater: string
-  price: number
-  imageSrc: string
-  imageAlt: string
-  ageRating: string
-  isPriority?: boolean
-  cityId?: number
-  showTypeId?: number
-  detailedUrl?: string | null
-  eventId?: string
-}
-
-export interface APIShowData {
+export interface Show {
   id: string
   externalId: number
   name: string
-  detailed_url: string | null
+  detailed_url: string
+  type_num: string
   image: string
   desc: string | null
   partnerId: number
@@ -35,11 +19,10 @@ export interface APIShowData {
   shopId: string
   createdAt: string
   updatedAt: string
-  events: APIEventData[]
-  showCategories: unknown[]
+  events: Event[]
 }
 
-export interface APIEventData {
+export interface Event {
   id: string
   externalId: number
   name: string
@@ -66,54 +49,45 @@ export interface APIEventData {
   isHideTime: boolean
   pipelineEventId: number
   isAccessOnlyLink: boolean
-  cityId: number
+  cityId: number // Теперь приходит с бэкенда
   address: string
   createdAt: string
   updatedAt: string
   showUuid: string
   buildingId: string
-  building: {
-    id: string
-    externalId: number
-    name: string
-    cityId: number
-    address: string
-    lat: string
-    lon: string
-    createdAt: string
-    updatedAt: string
-  }
+  building: Building
 }
 
-export interface EventsResponse {
-  success: boolean
-  shows: ShowItem[]
-  message?: string
-  error?: string
-}
-
-export interface NewEventsResponse {
-  success: boolean
-  data: APIShowData[]
-  message?: string
-  error?: string
-}
-
-export interface ShowItem {
-  id: number
-  name: string
-  image: string
-  min_price: string
-  age_limit: number
-  events: EventItem[]
-}
-
-export interface EventItem {
+export interface Building {
   id: string
-  date: string
+  externalId: number
+  name: string
+  cityId: number
   address: string
-  age_limit: number
-  building: {
-    name: string
-  }
+  lat: string
+  lon: string
+  createdAt: string
+  updatedAt: string
 }
+
+export interface EventCardData {
+  id: number
+  title: string
+  imageSrc: string
+  imageAlt: string
+  price: number
+  date: string
+  location: string
+  theater: string
+  ageRating: string
+  detailedUrl: string | null
+  eventId: string
+  cityId?: number
+  showTypeId?: number
+}
+
+export interface ParsedShowsResponse {
+  shows: Show[]
+}
+
+export type ParsedShowsResponseArray = Show[]

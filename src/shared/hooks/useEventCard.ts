@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl'
+import { formatDate } from '@/shared/utils/date'
 
 interface UseEventCardProps {
   date: string
@@ -15,14 +16,18 @@ export const useEventCard = ({
 
   const localizedLocation =
     location === 'locationNotSpecified'
-      ? common('locationNotSpecified')
+      ? common('defaultValues.locationNotSpecified')
       : location
 
   const localizedDate =
-    date === 'dateNotSpecified' ? common('dateNotSpecified') : date
+    date === 'dateNotSpecified'
+      ? common('defaultValues.dateNotSpecified')
+      : formatDate(date)
 
   const localizedTheater =
-    theater === 'theaterNotSpecified' ? common('theaterNotSpecified') : theater
+    theater === 'theaterNotSpecified'
+      ? common('defaultValues.theaterNotSpecified')
+      : theater
 
   return {
     localizedLocation,

@@ -1,20 +1,10 @@
-import { EventsResponse } from '@/shared/types/event'
+import { ParsedShowsResponse } from '@/shared/types/event'
+import { localApi } from '@/core/api/api'
 
-export const getEventsRequest = async (): Promise<EventsResponse> => {
+export const getEventsRequest = async (): Promise<ParsedShowsResponse> => {
   try {
-    const response = await fetch('/api/events', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
-
-    const data = await response.json()
-    return data
+    const response = await localApi.get('/shows')
+    return response.data
   } catch (error) {
     console.error('Error fetching events:', error)
     throw error
