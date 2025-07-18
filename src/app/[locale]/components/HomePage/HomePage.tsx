@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './HomePage.module.scss'
-import { useEvents } from '@/hooks/index'
+import { useEvents } from '@/shared/hooks'
 import { EventList } from '../index'
 import { useTranslations } from 'next-intl'
 
