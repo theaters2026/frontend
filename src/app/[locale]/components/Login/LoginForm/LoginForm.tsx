@@ -7,8 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Form } from '@/shared/ui/form'
 import { Input } from '@/shared/ui/input'
 import { useTranslations } from 'next-intl'
-import { login } from './apiLogin'
-import { saveLoginTokens } from './cookieLogin'
+import { login, saveLoginTokens } from './apiLogin'
 
 export const LoginForm: React.FC = () => {
   const t = useTranslations('Login')
