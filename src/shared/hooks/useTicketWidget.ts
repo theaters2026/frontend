@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import type { TicketManagerParams } from '../types'
 import {
   TICKET_MANAGER_CONFIG,
   TICKET_MANAGER_MESSAGES,
@@ -7,7 +6,7 @@ import {
 
 interface UseTicketWidgetReturn {
   isLoaded: boolean
-  openSchedule: (eventId: string, cityId: number, showTypeId: number) => void
+  openSchedule: (eventId: number, cityId: number, showTypeId: number) => void
 }
 
 export const useTicketWidget = (): UseTicketWidgetReturn => {
@@ -23,7 +22,9 @@ export const useTicketWidget = (): UseTicketWidgetReturn => {
       `script[src="${TICKET_MANAGER_CONFIG.SCRIPT_URL}"]`
     )
     if (existingScript) {
-      existingScript.addEventListener('load', () => setIsLoaded(true))
+      existingScript.addEventListener('load', () => {
+        setIsLoaded(true)
+      })
       return
     }
 
@@ -32,6 +33,9 @@ export const useTicketWidget = (): UseTicketWidgetReturn => {
     script.async = true
     script.onload = () => {
       setIsLoaded(true)
+    }
+    script.onerror = (error) => {
+      console.error(TICKET_MANAGER_MESSAGES.SCRIPT_NOT_LOADED, error)
     }
 
     document.head.appendChild(script)
@@ -44,24 +48,23 @@ export const useTicketWidget = (): UseTicketWidgetReturn => {
   }, [])
 
   const openSchedule = (
-    eventId: string,
+    eventId: number,
     cityId: number,
     showTypeId: number
   ) => {
     if (!isLoaded) {
+      console.warn(TICKET_MANAGER_MESSAGES.SCRIPT_NOT_LOADED)
       return
     }
 
     try {
       if (typeof window !== 'undefined' && window.ticketManager) {
-        const params: TicketManagerParams = {
-          widgetId: TICKET_MANAGER_CONFIG.DEFAULT_WIDGET_ID,
+        window.ticketManager.creationSchedule(
+          TICKET_MANAGER_CONFIG.DEFAULT_WIDGET_ID,
           eventId,
           cityId,
-          showTypeId,
-        }
-
-        window.ticketManager.creationSchedule(params)
+          showTypeId
+        )
       } else {
         console.error(TICKET_MANAGER_MESSAGES.TICKET_MANAGER_NOT_FOUND)
       }
