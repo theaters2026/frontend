@@ -1,16 +1,20 @@
 export interface TicketManagerParams {
   widgetId: string
-  eventId: string
+  eventId: number
   cityId: number
   showTypeId: number
 }
 
-export interface TicketManager {
-  creationSchedule: (params: TicketManagerParams) => void
-}
-
 declare global {
   interface Window {
-    ticketManager?: TicketManager
+    ticketManager: {
+      // eslint-disable-next-line max-params
+      creationSchedule: (
+        widgetId: string,
+        eventId: number,
+        cityId: number,
+        showTypeId: number
+      ) => void
+    }
   }
 }
