@@ -3,9 +3,10 @@ import Image from 'next/image'
 import { Button } from '@/shared/ui'
 import styles from './EventCard.module.scss'
 import { UI_CONSTANTS } from '@/shared/constants'
-import { useNavigation, useEventCard } from '@/shared/hooks'
+import { useNavigation, useEventCard, useTicketWidget } from '@/shared/hooks'
 import { useTranslations } from 'next-intl'
 import { EventCardData } from '@/shared/types'
+import { ticketService } from '@/core/services'
 
 interface EventCardProps {
   eventData: EventCardData
@@ -13,6 +14,7 @@ interface EventCardProps {
 
 export const EventCard = ({ eventData }: EventCardProps) => {
   const { navigateToEvent } = useNavigation()
+  const { openSchedule } = useTicketWidget()
   const t = useTranslations('EventCard')
 
   const { localizedLocation, localizedDate, localizedTheater } = useEventCard({
@@ -23,6 +25,10 @@ export const EventCard = ({ eventData }: EventCardProps) => {
 
   const handleDetailsClick = () => {
     navigateToEvent(eventData.id)
+  }
+
+  const handleBuyTicketClick = () => {
+    ticketService.purchaseTicket(eventData, openSchedule)
   }
 
   return (
@@ -78,7 +84,11 @@ export const EventCard = ({ eventData }: EventCardProps) => {
         >
           {t('details')}
         </Button>
-        <Button className={styles['card__button']} size="md">
+        <Button
+          className={styles['card__button']}
+          size="md"
+          onClick={handleBuyTicketClick}
+        >
           {t('buyTicket')}
         </Button>
       </footer>
