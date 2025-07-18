@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'store.rambler.ru',
+        hostname: process.env.NEXT_PUBLIC_IMAGES_HOSTNAME || 'store.rambler.ru',
         port: '',
         pathname: '/**',
       },
