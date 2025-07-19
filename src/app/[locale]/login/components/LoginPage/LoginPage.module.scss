@@ -1,5 +1,5 @@
-@use '../../shared/styles/settings/colors' as colors;
-@use '../../shared/styles/settings/borders' as radius;
+@use '../../../../../shared/styles/settings/colors' as colors;
+@use '../../../../../shared/styles/settings/borders' as radius;
 
 .page {
   position: relative;
@@ -25,6 +25,6 @@
   &__footer {
     position: absolute;
     width: 100%;
-    bottom: 0px;
+    bottom: 0;
   }
 }

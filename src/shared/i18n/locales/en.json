@@ -3,18 +3,34 @@
     "title": "Platform of independent theatres"
   },
   "Login": {
-    "userNameText": "Enter your username",
-    "passwordText": "Enter your password",
-    "emailText": "Enter your email",
-
-    "userNamePlaceholder": "Username",
-    "passwordPlaceholder": "Password",
-    "emailPlaceholder": "Email",
-
-    "MinErrorMessage": "Required field",
-    "MaxErrorMessage": "Too long",
-    "emailErrorMessage": "Enter your email",
-
-    "buttonSubmit": "Authorization"
+    "title": "Login",
+    "userNameText": "Username",
+    "userNamePlaceholder": "Enter username",
+    "passwordText": "Password",
+    "passwordPlaceholder": "Enter password",
+    "emailText": "Email",
+    "emailPlaceholder": "Enter email",
+    "buttonSubmit": "Login",
+    "loading": "Logging in..."
+  },
+  "Register": {
+    "title": "Registration",
+    "usernameText": "Username",
+    "usernamePlaceholder": "Enter username",
+    "emailText": "Email",
+    "emailPlaceholder": "Enter email address",
+    "passwordText": "Password",
+    "passwordPlaceholder": "Enter password",
+    "confirmPasswordText": "Confirm Password",
+    "confirmPasswordPlaceholder": "Repeat password",
+    "buttonSubmit": "Register",
+    "registering": "Registering..."
+  },
+  "Validation": {
+    "MinErrorMessage": "Field is required",
+    "MaxErrorMessage": "Value is too long",
+    "PasswordMinErrorMessage": "Password must be at least 6 characters",
+    "emailErrorMessage": "Invalid email format",
+    "passwordsDoNotMatch": "Passwords do not match"
   }
 }
