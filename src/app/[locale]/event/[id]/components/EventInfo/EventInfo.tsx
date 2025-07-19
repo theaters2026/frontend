@@ -1,10 +1,10 @@
-import { ShowItem } from '@/shared/types/event'
+import { ShowWithParsedData } from '@/shared/types/event'
 import styles from './EventInfo.module.scss'
 import { useTranslations } from 'next-intl'
 import { useEventData } from '@/shared/hooks'
 
 interface EventInfoProps {
-  event: ShowItem
+  event: ShowWithParsedData
 }
 
 export const EventInfo = ({ event }: EventInfoProps) => {
@@ -21,9 +21,9 @@ export const EventInfo = ({ event }: EventInfoProps) => {
           </h4>
         )}
         <h4 className={styles['event-info__text']}>{locationName}</h4>
-        <h4 className={styles['event-info__text']}>{event.age_limit}+</h4>
+        <h4 className={styles['event-info__text']}>{event.ageLimit}</h4>
       </div>
-      <p className={styles['event-info__description']}>{event.short_info}</p>
+      <p className={styles['event-info__description']}>{event.shortInfo}</p>
     </div>
   )
 }

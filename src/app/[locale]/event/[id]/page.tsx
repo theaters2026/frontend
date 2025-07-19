@@ -4,6 +4,7 @@ import { Button } from '@/shared/ui'
 import styles from './page.module.scss'
 import { EventHeader, EventHero, EventInfo, EventSessions } from './components/'
 import { useTranslations } from 'next-intl'
+import { useEffect } from 'react'
 
 export default function EventDetailsPage() {
   const { navigateBack } = useNavigation()
@@ -17,6 +18,7 @@ export default function EventDetailsPage() {
         <div className={styles['event-detail-page__loading']}>
           <div className={styles['loading']}>
             <h3>{t('loading')}</h3>
+            <p>Loading event ID: {eventId}</p>
           </div>
         </div>
       </div>

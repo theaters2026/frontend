@@ -1,4 +1,4 @@
-import { ShowItem } from '@/shared/types/event'
+import { ShowWithParsedData } from '@/shared/types/event'
 import { Button } from '@/shared/ui'
 import styles from './EventHero.module.scss'
 import Image from 'next/image'
@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 import { useEventData } from '@/shared/hooks'
 
 interface EventHeroProps {
-  event: ShowItem
+  event: ShowWithParsedData
 }
 
 export const EventHero = ({ event }: EventHeroProps) => {
@@ -22,6 +22,7 @@ export const EventHero = ({ event }: EventHeroProps) => {
           alt={event.name}
           width={UI_CONSTANTS.EVENT_DESCRIPTION_IMAGE.WIDTH}
           height={UI_CONSTANTS.EVENT_DESCRIPTION_IMAGE.HEIGHT}
+          priority
           className={styles['event-hero__image']}
         />
         <div className={styles['event-hero__overlay']}>
