@@ -20,6 +20,41 @@
       "dateNotSpecified": "Дата не указана",
       "locationNotSpecified": "Место не указано",
       "theaterNotSpecified": "Театр не указан"
+    },
+    "Login": {
+      "header": "Театральная платформа - Вход",
+      "footer": "© 2025 Платформа независимых театров",
+      "title": "Вход в систему",
+      "userNameText": "Имя пользователя",
+      "userNamePlaceholder": "Введите имя пользователя",
+      "passwordText": "Пароль",
+      "passwordPlaceholder": "Введите пароль",
+      "emailText": "Электронная почта",
+      "emailPlaceholder": "Введите email",
+      "buttonSubmit": "Войти",
+      "loading": "Вход..."
+    },
+    "Register": {
+      "header": "Театральная платформа - Регистрация",
+      "footer": "© 2025 Платформа независимых театров",
+      "title": "Регистрация",
+      "usernameText": "Имя пользователя",
+      "usernamePlaceholder": "Введите имя пользователя",
+      "emailText": "Электронная почта",
+      "emailPlaceholder": "Введите адрес электронной почты",
+      "passwordText": "Пароль",
+      "passwordPlaceholder": "Введите пароль",
+      "confirmPasswordText": "Подтвердите пароль",
+      "confirmPasswordPlaceholder": "Повторите пароль",
+      "buttonSubmit": "Зарегистрироваться",
+      "registering": "Регистрация..."
+    },
+    "Validation": {
+      "MinErrorMessage": "Поле обязательно для заполнения",
+      "MaxErrorMessage": "Слишком длинное значение",
+      "PasswordMinErrorMessage": "Пароль должен содержать минимум 6 символов",
+      "emailErrorMessage": "Некорректный email",
+      "passwordsDoNotMatch": "Пароли не совпадают"
     }
   }
 }

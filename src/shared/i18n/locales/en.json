@@ -20,6 +20,42 @@
       "dateNotSpecified": "Date not specified",
       "locationNotSpecified": "Location not specified",
       "theaterNotSpecified": "Theater not specified"
+    },
+    "Login": {
+      "header": "Theater Platform - Sign In",
+      "footer": "© 2025 Platform of independent theatres",
+      "title": "Login",
+      "userNameText": "Username",
+      "userNamePlaceholder": "Enter username",
+      "passwordText": "Password",
+      "passwordPlaceholder": "Enter password",
+      "emailText": "Email",
+      "emailPlaceholder": "Enter email",
+      "buttonSubmit": "Login",
+      "loading": "Logging in..."
+    },
+    "Register": {
+      "header": "Theater Platform - Sign Up",
+      "footer": "© 2025 Platform of independent theatres",
+
+      "title": "Registration",
+      "usernameText": "Username",
+      "usernamePlaceholder": "Enter username",
+      "emailText": "Email",
+      "emailPlaceholder": "Enter email address",
+      "passwordText": "Password",
+      "passwordPlaceholder": "Enter password",
+      "confirmPasswordText": "Confirm Password",
+      "confirmPasswordPlaceholder": "Repeat password",
+      "buttonSubmit": "Register",
+      "registering": "Registering..."
+    },
+    "Validation": {
+      "MinErrorMessage": "Field is required",
+      "MaxErrorMessage": "Value is too long",
+      "PasswordMinErrorMessage": "Password must be at least 6 characters",
+      "emailErrorMessage": "Invalid email format",
+      "passwordsDoNotMatch": "Passwords do not match"
     }
   }
 }
