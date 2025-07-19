@@ -3,6 +3,8 @@
     "title": "Platform of independent theatres"
   },
   "Login": {
+    "header": "Theater Platform - Sign In",
+    "footer": "© 2025 Platform of independent theatres",
     "title": "Login",
     "userNameText": "Username",
     "userNamePlaceholder": "Enter username",
@@ -14,6 +16,9 @@
     "loading": "Logging in..."
   },
   "Register": {
+    "header": "Theater Platform - Sign Up",
+    "footer": "© 2025 Platform of independent theatres",
+
     "title": "Registration",
     "usernameText": "Username",
     "usernamePlaceholder": "Enter username",
