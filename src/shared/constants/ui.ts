@@ -4,6 +4,10 @@ export const UI_CONSTANTS = {
     WIDTH: 1440,
     HEIGHT: 924,
   },
+  EVENT_HEADER_LOGO: {
+    WIDTH: 128,
+    HEIGHT: 40,
+  },
   POPULAR_EVENTS_LIMIT: 3,
   SESSIONS_LIMIT: 4,
   BUTTON: {

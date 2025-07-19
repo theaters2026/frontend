@@ -6,4 +6,7 @@ export const API_CONSTANTS = {
     NOT_FOUND: 404,
     INTERNAL_SERVER_ERROR: 500,
   },
+  LIMITS: {
+    MAX_EVENTS: 50,
+  },
 } as const
