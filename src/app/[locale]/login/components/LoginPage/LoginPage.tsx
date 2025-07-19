@@ -1,4 +1,3 @@
-
 import { LoginForm } from '../LoginForm/LoginForm'
 import { useTranslations } from 'next-intl'
 import styles from './LoginPage.module.scss'
