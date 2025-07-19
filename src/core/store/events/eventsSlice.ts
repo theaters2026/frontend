@@ -1,11 +1,12 @@
-import { ShowItem } from '@/shared/types/event'
+import { Show } from '@/shared/types/event'
+import { ParsedEventData } from '@/shared/utils'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store'
 import { fetchEventData } from './eventsActions'
 
 interface EventsState {
-  events: ShowItem[]
-  currentEvent: ShowItem | null
+  events: Array<Show & { parsedData: ParsedEventData | null }>
+  currentEvent: (Show & { parsedData: ParsedEventData | null }) | null
   statusLoading: boolean
   statusError: string | null
   errorMessage: string
@@ -23,7 +24,10 @@ const eventsSlice = createSlice({
   name: 'events',
   initialState,
   reducers: {
-    setCurrentEvent(state, action: PayloadAction<ShowItem>) {
+    setCurrentEvent(
+      state,
+      action: PayloadAction<Show & { parsedData: ParsedEventData | null }>
+    ) {
       state.currentEvent = action.payload
     },
     clearCurrentEvent(state) {
