@@ -13,6 +13,9 @@
     "minutes": "минут",
     "dateNotSpecified": "Дата не указана",
     "locationNotSpecified": "Место не указано",
+    "addressNotSpecified": "Адрес не указан",
+    "currency": "р.",
+    "ageLimit": "{age}+",
     "loading": "Загрузка...",
     "notFound": "Событие не найдено",
     "back": "Назад"

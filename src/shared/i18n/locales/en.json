@@ -13,6 +13,9 @@
     "minutes": "minutes",
     "dateNotSpecified": "Date not specified",
     "locationNotSpecified": "Location not specified",
+    "addressNotSpecified": "Address not specified",
+    "currency": "₽",
+    "ageLimit": "{age}+",
     "loading": "Loading...",
     "notFound": "Event not found",
     "back": "Back"
@@ -33,7 +36,6 @@
   "Register": {
     "header": "Theater Platform - Sign Up",
     "footer": "© 2025 Platform of independent theatres",
-
     "title": "Registration",
     "usernameText": "Username",
     "usernamePlaceholder": "Enter username",
