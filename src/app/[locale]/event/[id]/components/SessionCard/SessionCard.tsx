@@ -1,47 +1,59 @@
-import { formatDate } from '@/shared/utils/date'
-import styles from './SessionCard.module.scss'
-import { formatPriceRange } from '@/shared/utils'
+import React from 'react'
+import { SessionCardData } from '@/shared/types/event'
 import { Button } from '@/shared/ui'
+import {
+  formatDate,
+  prepareTicketData,
+  validateTicketData,
+} from '@/shared/utils'
 import { useTranslations } from 'next-intl'
+import { useTicketWidget } from '@/shared/hooks'
+import styles from './SessionCard.module.scss'
 
 interface SessionCardProps {
-  session: {
-    id: number
-    date: string
-    is_covid_free?: boolean
-    location_name: string
-    address: string
-    min_price?: string
-    max_price?: string
-    count: number
-  }
+  sessionData: SessionCardData
 }
 
-export const SessionCard = ({ session }: SessionCardProps) => {
+export const SessionCard: React.FC<SessionCardProps> = ({ sessionData }) => {
   const t = useTranslations('EventDetails')
+  const { openSchedule } = useTicketWidget()
+
+  const handleBuyTicket = () => {
+    const ticketData = prepareTicketData(sessionData)
+
+    if (validateTicketData(ticketData)) {
+      openSchedule(ticketData.eventId, ticketData.cityId, ticketData.showTypeId)
+    } else {
+      console.error('Missing required parameters for openSchedule:', {
+        sessionData,
+      })
+    }
+  }
 
   return (
-    <article className={styles['session-card']}>
-      <div className={styles['session-card__left']}>
-        <time className={styles['session-card__date']} dateTime={session.date}>
-          {formatDate(session.date)}
-        </time>
+    <div className={styles['session-card']}>
+      <div className={styles['session-card__info']}>
+        <div className={styles['session-card__date']}>
+          {sessionData.date
+            ? formatDate(sessionData.date)
+            : t('dateNotSpecified')}
+        </div>
         <div className={styles['session-card__location']}>
-          <p className={styles['session-card__address']}>{session.address}</p>
+          {sessionData.location || t('locationNotSpecified')}
+        </div>
+        <div className={styles['session-card__address']}>
+          {sessionData.address || t('addressNotSpecified')}
+        </div>
+        <div className={styles['session-card__price']}>
+          {sessionData.minPrice || '0'} - {sessionData.maxPrice || '0'}{' '}
+          {t('currency')}
         </div>
       </div>
-
-      <div className={styles['session-card__center']}>
-        <h4 className={styles['session-card__price']}>
-          {formatPriceRange(session.min_price, session.max_price)}
-        </h4>
-      </div>
-
-      <div className={styles['session-card__right']}>
-        <Button size="lg" className={styles['session-card__button']}>
+      <div className={styles['session-card__actions']}>
+        <Button onClick={handleBuyTicket} size="md">
           {t('buyTicket')}
         </Button>
       </div>
-    </article>
+    </div>
   )
 }
