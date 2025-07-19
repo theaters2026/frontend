@@ -6,4 +6,3 @@ export * from './useEventSessions'
 export * from './useEventParams'
 export * from './useSearch'
 export * from './useTicketWidget'
-

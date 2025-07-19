@@ -30,4 +30,8 @@ export const UI_CONSTANTS = {
       POINTER_EVENTS: 'pointer-events-none',
     },
   },
+  FORM_VALIDATION: {
+    MIN_PASSWORD_LENGTH: 6,
+    MAX_FIELD_LENGTH: 100,
+  },
 } as const
