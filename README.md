@@ -60,21 +60,71 @@ Navigate to [http://localhost:3000](http://localhost:3000) to see the applicatio
 ``` 
 src/
 ├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Root layout
-│   └── page.tsx            # Home page
+│   └── [locale]/           # Internationalization
+│       ├── login/          # Login page
+│       │   ├── components/ # Login page components
+│       │   │   ├── LoginForm/
+│       │   │   │   ├── LoginForm.tsx
+│       │   │   │   └── LoginForm.schema.ts
+│       │   │   └── LoginPage/
+│       │   │       ├── LoginPage.tsx
+│       │   │       └── LoginPage.module.scss
+│       │   └── page.tsx
+│       ├── register/       # Registration page
+│       │   ├── components/ # Registration page components
+│       │   │   ├── RegisterForm/
+│       │   │   └── RegisterPage/
+│       │   │       ├── RegisterPage.tsx
+│       │   │       └── RegisterPage.module.scss
+│       │   └── page.tsx
+│       ├── layout.tsx      # Localized layout
+│       └── page.tsx        # Home page
 ├── core/                   # Core application logic
-│   ├── api/                # ApiRegister configuration
+│   ├── api/                # API configuration and methods
 │   ├── providers/          # App providers (Redux)
+│   ├── services/           # Business logic services (e.g., AuthService)
 │   └── store/              # Redux store
+│       ├── utils/          # Store utilities
+│       │   └── storeUtils.ts
+│       └── store.ts
 ├── shared/                 # Shared resources
+│   ├── constants/          # Application constants
+│   │   ├── api.ts
+│   │   ├── auth.ts
+│   │   ├── ticketManager.ts
+│   │   ├── ui.ts
+│   │   └── index.ts
+│   ├── hooks/              # Custom React hooks
+│   │   ├── useNavigation.ts
+│   │   ├── useTicketWidget.ts
+│   │   └── index.ts
+│   ├── i18n/               # Internationalization
+│   │   ├── locales/        # Translation files
+│   │   │   ├── en.json
+│   │   │   └── ru.json
+│   │   ├── navigation.ts
+│   │   ├── request.ts
+│   │   └── routing.ts
+│   ├── styles/             # Global styles
+│   │   └── globals.scss
+│   ├── types/              # TypeScript type definitions
+│   │   ├── ticketManager.ts
+│   │   └── index.ts
 │   ├── ui/                 # Reusable UI components
-│   ├── utils/                # Utility functions
-│   └── styles/             # Global styles
-│       ├── settings/       # SCSS variables
-│       │   ├── colors.scss
-│       │   └── borders.scss
-│       └── globals.scss    # Global styles
-│   
+│   │   ├── Button.tsx
+│   │   ├── Form.tsx
+│   │   ├── Input.tsx
+│   │   ├── Label.tsx
+│   │   └── index.ts
+│   └── utils/              # Utility functions
+│       ├── date.ts
+│       ├── number.ts
+│       ├── price.ts
+│       ├── styles.ts
+│       ├── url.ts
+│       └── index.ts
+└── middleware.ts           # Next.js middleware
+
 ```
 ## 🔧 Development Tools
 ### Code Quality
