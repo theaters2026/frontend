@@ -1,3 +1,4 @@
 export * from './ui'
 export * from './api'
 export * from './ticketManager'
+export * from './auth'

@@ -1,4 +1,4 @@
-import { RegisterForm } from './RegisterForm/RegisterForm'
+import { RegisterForm } from '../RegisterForm/RegisterForm'
 import styles from './RegisterPage.module.scss'
 
 export const RegisterPage: React.FC = () => {

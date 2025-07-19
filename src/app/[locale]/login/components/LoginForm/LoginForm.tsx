@@ -2,17 +2,20 @@
 
 import { Button } from '@/shared/ui'
 import { useForm } from 'react-hook-form'
-import { loginFormSchema, LoginFormSchema } from './loginForm.schema'
+import { LoginFormSchema } from './LoginForm.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Form } from '@/shared/ui/form'
-import { Input } from '@/shared/ui/input'
+import { Form } from '@/shared/ui/Form'
+import { Input } from '@/shared/ui/Input'
 import { useTranslations } from 'next-intl'
-import { login, saveLoginTokens } from './apiLogin'
+import { login } from '@/core/api/login/apiLogin'
+import { AuthService } from '@/core/services/authService'
 
 export const LoginForm: React.FC = () => {
   const t = useTranslations('Login')
+  const tValidation = useTranslations('Validation')
+
   const form = useForm<LoginFormSchema>({
-    resolver: zodResolver(loginFormSchema),
+    resolver: zodResolver(LoginFormSchema),
     defaultValues: {
       username: '',
       password: '',
@@ -21,58 +24,68 @@ export const LoginForm: React.FC = () => {
   })
 
   const onSubmit = async (data: LoginFormSchema) => {
-    console.log(saveLoginTokens((await login(data)).data))
-    console.log('Form data:', data)
+    try {
+      const response = await login(data)
+      if (response && response.data) {
+        AuthService.saveTokens(response.data)
+      }
+    } catch (error) {
+      console.error('Login failed:', error)
+    }
   }
 
   return (
     <div>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="place-items-center space-y-6"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <div>
-            <p> {t('userNameText')} </p>
+            <p>{t('userNameText')}</p>
             <Input
               id="username"
               placeholder={t('userNamePlaceholder')}
               {...form.register('username')}
             />
             {form.formState.errors.username && (
-              <p className="text-sm text-destructive">
-                {t(`${form.formState.errors.username.message}`)}
+              <p>
+                {tValidation(form.formState.errors.username.message as string)}
               </p>
             )}
           </div>
+
           <div>
-            <p> {t('passwordText')} </p>
+            <p>{t('passwordText')}</p>
             <Input
               id="password"
+              type="password"
               placeholder={t('passwordPlaceholder')}
               {...form.register('password')}
             />
             {form.formState.errors.password && (
-              <p className="text-sm text-destructive">
-                {t(`${form.formState.errors.password.message}`)}
+              <p>
+                {tValidation(form.formState.errors.password.message as string)}
               </p>
             )}
           </div>
+
           <div>
-            <p> {t('emailText')} </p>
+            <p>{t('emailText')}</p>
             <Input
               id="email"
+              type="email"
               placeholder={t('emailPlaceholder')}
               {...form.register('email')}
             />
             {form.formState.errors.email && (
-              <p className="text-sm text-destructive">
-                {t(`${form.formState.errors.email.message}`)}
+              <p>
+                {tValidation(form.formState.errors.email.message as string)}
               </p>
             )}
           </div>
+
           <div>
-            <Button type="submit"> {t('buttonSubmit')} </Button>
+            <Button type="submit" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? t('loading') : t('buttonSubmit')}
+            </Button>
           </div>
         </form>
       </Form>

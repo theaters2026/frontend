@@ -3,18 +3,34 @@
     "title": "Платформа независимых театров"
   },
   "Login": {
-    "userNameText": "Введите имя пользователя",
-    "passwordText": "Введите пароль",
-    "emailText": "Введите почту",
-
-    "userNamePlaceholder": "Имя Пользователя",
-    "passwordPlaceholder": "Пароль",
-    "emailPlaceholder": "Почта",
-
-    "MinErrorMessage": "Обязательное поле",
-    "MaxErrorMessage": "Слишком длинно",
-    "emailErrorMessage": "Введите почту",
-
-    "buttonSubmit": "Авторизация"
+    "title": "Вход в систему",
+    "userNameText": "Имя пользователя",
+    "userNamePlaceholder": "Введите имя пользователя",
+    "passwordText": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
+    "emailText": "Электронная почта",
+    "emailPlaceholder": "Введите email",
+    "buttonSubmit": "Войти",
+    "loading": "Вход..."
+  },
+  "Register": {
+    "title": "Регистрация",
+    "usernameText": "Имя пользователя",
+    "usernamePlaceholder": "Введите имя пользователя",
+    "emailText": "Электронная почта",
+    "emailPlaceholder": "Введите адрес электронной почты",
+    "passwordText": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
+    "confirmPasswordText": "Подтвердите пароль",
+    "confirmPasswordPlaceholder": "Повторите пароль",
+    "buttonSubmit": "Зарегистрироваться",
+    "registering": "Регистрация..."
+  },
+  "Validation": {
+    "MinErrorMessage": "Поле обязательно для заполнения",
+    "MaxErrorMessage": "Слишком длинное значение",
+    "PasswordMinErrorMessage": "Пароль должен содержать минимум 6 символов",
+    "emailErrorMessage": "Некорректный email",
+    "passwordsDoNotMatch": "Пароли не совпадают"
   }
 }

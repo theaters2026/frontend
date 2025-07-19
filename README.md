@@ -63,7 +63,7 @@ src/
 │   ├── layout.tsx          # Root layout
 │   └── page.tsx            # Home page
 ├── core/                   # Core application logic
-│   ├── api/                # API configuration
+│   ├── api/                # ApiRegister configuration
 │   ├── providers/          # App providers (Redux)
 │   └── store/              # Redux store
 ├── shared/                 # Shared resources
