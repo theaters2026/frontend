@@ -1,5 +1,20 @@
 {
   "HomePage": {
     "title": "Платформа независимых театров"
+  },
+  "Login": {
+    "userNameText": "Введите имя пользователя",
+    "passwordText": "Введите пароль",
+    "emailText": "Введите почту",
+
+    "userNamePlaceholder": "Имя Пользователя",
+    "passwordPlaceholder": "Пароль",
+    "emailPlaceholder": "Почта",
+
+    "MinErrorMessage": "Обязательное поле",
+    "MaxErrorMessage": "Слишком длинно",
+    "emailErrorMessage": "Введите почту",
+
+    "buttonSubmit": "Авторизация"
   }
 }

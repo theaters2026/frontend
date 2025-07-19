@@ -1,5 +1,20 @@
 {
   "HomePage": {
     "title": "Platform of independent theatres"
+  },
+  "Login": {
+    "userNameText": "Enter your username",
+    "passwordText": "Enter your password",
+    "emailText": "Enter your email",
+
+    "userNamePlaceholder": "Username",
+    "passwordPlaceholder": "Password",
+    "emailPlaceholder": "Email",
+
+    "MinErrorMessage": "Required field",
+    "MaxErrorMessage": "Too long",
+    "emailErrorMessage": "Enter your email",
+
+    "buttonSubmit": "Authorization"
   }
 }
