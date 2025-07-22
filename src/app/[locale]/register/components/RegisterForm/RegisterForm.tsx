@@ -25,9 +25,9 @@ export const RegisterForm: React.FC = () => {
 
   const onSubmit = async (data: RegisterFormSchema) => {
     try {
-      const response = await registerUser(data)
-      if (response && response.data) {
-        AuthService.saveTokens(response.data)
+      const response = await AuthService.register(data)
+      if (response) {
+        return null
       }
     } catch (error) {
       console.error('Registration failed:', error)

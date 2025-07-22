@@ -25,9 +25,9 @@ export const LoginForm: React.FC = () => {
 
   const onSubmit = async (data: LoginFormSchema) => {
     try {
-      const response = await login(data)
-      if (response && response.data) {
-        AuthService.saveTokens(response.data)
+      const response = await AuthService.login(data)
+      if (response) {
+        return null
       }
     } catch (error) {
       console.error('Login failed:', error)
