@@ -16,6 +16,7 @@
     "currency": "RUB"
   },
   "Common": {
+    "priceToBeConfirmed": "Price to be confirmed",
     "defaultValues": {
       "dateNotSpecified": "Date not specified",
       "locationNotSpecified": "Location not specified",
@@ -37,7 +38,6 @@
     "Register": {
       "header": "Theater Platform - Sign Up",
       "footer": "© 2025 Platform of independent theatres",
-
       "title": "Registration",
       "usernameText": "Username",
       "usernamePlaceholder": "Enter username",
@@ -56,6 +56,24 @@
       "PasswordMinErrorMessage": "Password must be at least 6 characters",
       "emailErrorMessage": "Invalid email format",
       "passwordsDoNotMatch": "Passwords do not match"
-    }
+    },
+    "title": "Registration",
+    "usernameText": "Username",
+    "usernamePlaceholder": "Enter username",
+    "emailText": "Email",
+    "emailPlaceholder": "Enter email address",
+    "passwordText": "Password",
+    "passwordPlaceholder": "Enter password",
+    "confirmPasswordText": "Confirm Password",
+    "confirmPasswordPlaceholder": "Repeat password",
+    "buttonSubmit": "Register",
+    "registering": "Registering..."
+  },
+  "Validation": {
+    "MinErrorMessage": "Field is required",
+    "MaxErrorMessage": "Value is too long",
+    "PasswordMinErrorMessage": "Password must be at least 6 characters",
+    "emailErrorMessage": "Invalid email format",
+    "passwordsDoNotMatch": "Passwords do not match"
   }
 }
