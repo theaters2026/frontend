@@ -37,5 +37,8 @@
     "PasswordMinErrorMessage": "Password must be at least 6 characters",
     "emailErrorMessage": "Invalid email format",
     "passwordsDoNotMatch": "Passwords do not match"
+  },
+  "Common": {
+    "priceToBeConfirmed": "Price to be confirmed"
   }
 }

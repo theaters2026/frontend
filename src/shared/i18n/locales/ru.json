@@ -36,5 +36,8 @@
     "PasswordMinErrorMessage": "Пароль должен содержать минимум 6 символов",
     "emailErrorMessage": "Некорректный email",
     "passwordsDoNotMatch": "Пароли не совпадают"
+  },
+  "Common": {
+    "priceToBeConfirmed": "Цена уточняется"
   }
 }
