@@ -2,10 +2,15 @@ import { useEffect, useMemo } from 'react'
 import { Show, EventCardData } from '@/shared/types/event'
 import { ParsedEventData } from '@/shared/utils/url'
 import { useAppDispatch, useAppSelector } from '@/core/store/utils/storeUtils'
-import { fetchEventData } from '@/core/store/events'
+import { fetchEventData } from '@/core/store/events/eventsActions'
+import {
+  selectEventsData,
+  selectEventsLoading,
+  selectEventsError,
+} from '@/core/store/events/eventsSlice'
 import { EventService } from '@/core/services/eventService'
 
-interface UseEventsReturn {
+export interface UseEventsReturn {
   shows: Array<Show & { parsedData: ParsedEventData | null }>
   popularEvents: EventCardData[]
   allEvents: EventCardData[]
@@ -18,17 +23,18 @@ interface UseEventsReturn {
 
 export const useEvents = (): UseEventsReturn => {
   const dispatch = useAppDispatch()
-  const { shows, loading, error, totalCount, originalCount } = useAppSelector(
-    (state) => state.events
-  )
+  const shows = useAppSelector(selectEventsData)
+  const loading = useAppSelector(selectEventsLoading)
+  const error = useAppSelector(selectEventsError)
+  const { totalCount, originalCount } = useAppSelector((state) => state.events)
 
-  const fetchEvents = () => {
+  const refetch = () => {
     dispatch(fetchEventData())
   }
 
   useEffect(() => {
-    fetchEvents()
-  }, [])
+    dispatch(fetchEventData())
+  }, [dispatch])
 
   const popularEvents = useMemo(() => {
     const popularShows = EventService.getPopularShows(shows)
@@ -46,7 +52,7 @@ export const useEvents = (): UseEventsReturn => {
     allEvents,
     loading,
     error,
-    refetch: fetchEvents,
+    refetch,
     totalCount,
     originalCount,
   }

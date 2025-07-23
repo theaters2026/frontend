@@ -5,7 +5,12 @@ export const UI_CONSTANTS = {
     LARGE: { WIDTH: 1000, HEIGHT: 563 },
   },
   CURRENCY_SYMBOL: 'р.',
+  EVENT_HEADER_LOGO: {
+    WIDTH: 128,
+    HEIGHT: 40,
+  },
   POPULAR_EVENTS_LIMIT: 3,
+  SESSIONS_LIMIT: 4,
   BUTTON: {
     PADDING: {
       DEFAULT: 'px-5 py-2.5',
