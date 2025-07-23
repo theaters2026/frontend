@@ -13,21 +13,6 @@
       padding: 0;
     }
   }
-
-  &__loading,
-  &__error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 60vh;
-    text-align: center;
-    padding: clamp(1rem, 4vw, 3rem);
-  }
-
-  &__error {
-    flex-direction: column;
-    gap: clamp(12px, 3vw, 40px);
-  }
 }
 
 .event-detail {
@@ -44,7 +29,6 @@
     margin: 0 auto;
     padding-top: 40px;
 
-    // При 1200px переходим на 2 строки
     @media (max-width: 1200px) {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
@@ -92,7 +76,7 @@
     overflow: visible;
 
     @media (max-width: 1200px) {
-      order: 1; // Основной контент идет первым
+      order: 1;
       gap: clamp(14px, 2.5vw, 32px);
     }
 
@@ -111,7 +95,7 @@
 
   &__sidebar {
     @media (max-width: 1200px) {
-      order: 2; // Сайдбар идет вторым (вторая строка)
+      order: 2;
     }
   }
 }
@@ -125,30 +109,6 @@
 
     @media (min-width: 1920px) {
       font-size: clamp(1.5rem, 3vw, 2.5rem);
-    }
-  }
-}
-
-.error {
-  h3 {
-    color: #dc3545;
-    font-size: clamp(1rem, 3vw, 2rem);
-    margin: 0;
-    font-weight: 500;
-
-    @media (min-width: 1920px) {
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-    }
-  }
-
-  &__actions {
-    display: flex;
-    gap: clamp(8px, 2vw, 24px);
-    justify-content: center;
-    flex-wrap: wrap;
-
-    @media (min-width: 1920px) {
-      gap: clamp(16px, 3vw, 32px);
     }
   }
 }
