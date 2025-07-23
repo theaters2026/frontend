@@ -14,6 +14,7 @@ export const useTicketWidget = (): UseTicketWidgetReturn => {
   const { isLoaded } = useScriptLoader({
     src: TICKET_MANAGER_CONFIG.SCRIPT_URL,
     async: true,
+    checkGlobal: () => typeof window !== 'undefined' && !!window.ticketManager,
     onError: (error) => {
       console.error(TICKET_MANAGER_MESSAGES.SCRIPT_NOT_LOADED, error)
     },

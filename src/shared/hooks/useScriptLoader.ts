@@ -4,6 +4,7 @@ interface UseScriptLoaderOptions {
   src: string
   async?: boolean
   onError?: (error: string | Event) => void
+  checkGlobal?: () => boolean
 }
 
 interface UseScriptLoaderReturn {
@@ -15,14 +16,32 @@ export const useScriptLoader = ({
   src,
   async = true,
   onError,
+  checkGlobal,
 }: UseScriptLoaderOptions): UseScriptLoaderReturn => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [error, setError] = useState<string | Event | null>(null)
 
   useEffect(() => {
+    if (checkGlobal && checkGlobal()) {
+      setIsLoaded(true)
+      return
+    }
+
     const existingScript = document.querySelector(`script[src="${src}"]`)
     if (existingScript) {
-      setIsLoaded(true)
+      if (checkGlobal) {
+        const checkInterval = setInterval(() => {
+          if (checkGlobal()) {
+            setIsLoaded(true)
+            clearInterval(checkInterval)
+          }
+        }, 100)
+
+        setTimeout(() => clearInterval(checkInterval), 10000)
+        return () => clearInterval(checkInterval)
+      } else {
+        setIsLoaded(true)
+      }
       return
     }
 
@@ -31,7 +50,18 @@ export const useScriptLoader = ({
     script.async = async
 
     script.onload = () => {
-      setIsLoaded(true)
+      if (checkGlobal) {
+        const checkInterval = setInterval(() => {
+          if (checkGlobal()) {
+            setIsLoaded(true)
+            clearInterval(checkInterval)
+          }
+        }, 100)
+
+        setTimeout(() => clearInterval(checkInterval), 10000)
+      } else {
+        setIsLoaded(true)
+      }
     }
 
     script.onerror = (errorEvent) => {
@@ -46,7 +76,7 @@ export const useScriptLoader = ({
         script.parentNode.removeChild(script)
       }
     }
-  }, [src, async, onError])
+  }, [src, async, onError, checkGlobal])
 
   return {
     isLoaded,
