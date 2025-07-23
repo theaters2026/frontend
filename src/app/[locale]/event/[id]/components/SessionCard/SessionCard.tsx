@@ -44,10 +44,10 @@ export const SessionCard: React.FC<SessionCardProps> = ({ sessionData }) => {
         <div className={styles['session-card__address']}>
           {sessionData.address || t('addressNotSpecified')}
         </div>
-        <div className={styles['session-card__price']}>
-          {sessionData.minPrice || '0'} - {sessionData.maxPrice || '0'}{' '}
-          {t('currency')}
-        </div>
+      </div>
+      <div className={styles['session-card__price']}>
+        {sessionData.minPrice || '0'} - {sessionData.maxPrice || '0'}{' '}
+        {t('currency')}
       </div>
       <div className={styles['session-card__actions']}>
         <Button onClick={handleBuyTicket} size="md">

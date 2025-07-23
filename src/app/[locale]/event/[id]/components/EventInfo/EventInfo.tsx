@@ -21,7 +21,7 @@ export const EventInfo = ({ event }: EventInfoProps) => {
           </h4>
         )}
         <h4 className={styles['event-info__text']}>{locationName}</h4>
-        <h4 className={styles['event-info__text']}>{event.ageLimit}</h4>
+        <h4 className={styles['event-info__text']}>{event.ageLimit}+</h4>
       </div>
       <p className={styles['event-info__description']}>{event.shortInfo}</p>
     </div>
