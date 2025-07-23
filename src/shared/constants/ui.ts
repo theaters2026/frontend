@@ -1,9 +1,5 @@
 export const UI_CONSTANTS = {
   CURRENCY_SYMBOL: 'р.',
-  EVENT_DESCRIPTION_IMAGE: {
-    WIDTH: 1440,
-    HEIGHT: 924,
-  },
   EVENT_HEADER_LOGO: {
     WIDTH: 128,
     HEIGHT: 40,
