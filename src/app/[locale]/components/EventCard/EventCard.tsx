@@ -3,7 +3,12 @@ import Image from 'next/image'
 import { Button } from '@/shared/ui'
 import styles from './EventCard.module.scss'
 import { UI_CONSTANTS } from '@/shared/constants'
-import { useNavigation, useEventCard, useTicketWidget } from '@/shared/hooks'
+import {
+  useNavigation,
+  useEventCard,
+  useTicketWidget,
+  useResponsiveImageSize,
+} from '@/shared/hooks'
 import { useTranslations } from 'next-intl'
 import { EventCardData } from '@/shared/types'
 import { ticketService } from '@/core/services'
@@ -14,7 +19,8 @@ interface EventCardProps {
 
 export const EventCard = ({ eventData }: EventCardProps) => {
   const { navigateToEvent } = useNavigation()
-  const { openSchedule } = useTicketWidget()
+  const { openSchedule, isLoaded } = useTicketWidget()
+  const imageSize = useResponsiveImageSize()
   const t = useTranslations('EventCard')
 
   const { localizedLocation, localizedDate, localizedTheater } = useEventCard({
@@ -38,8 +44,8 @@ export const EventCard = ({ eventData }: EventCardProps) => {
           <Image
             src={eventData.imageSrc}
             alt={eventData.imageAlt}
-            width={UI_CONSTANTS.EVENT_CARD_IMAGE.WIDTH}
-            height={UI_CONSTANTS.EVENT_CARD_IMAGE.HEIGHT}
+            width={imageSize.WIDTH}
+            height={imageSize.HEIGHT}
             priority
             className={styles['card__image']}
           />
@@ -88,6 +94,7 @@ export const EventCard = ({ eventData }: EventCardProps) => {
           className={styles['card__button']}
           size="md"
           onClick={handleBuyTicketClick}
+          disabled={!isLoaded}
         >
           {t('buyTicket')}
         </Button>
