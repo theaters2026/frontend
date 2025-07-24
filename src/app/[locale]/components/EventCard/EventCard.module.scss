@@ -10,12 +10,12 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: outline 0.5s ease;
-  contain: layout style;
+  transition: box-shadow 0.5s ease;
   min-width: 280px;
+  box-shadow: 0 0 0 0 transparent;
 
   &:hover {
-    outline: 1px solid colors.$secondary-color-800;
+    box-shadow: 0 0 0 2px colors.$secondary-color-800;
   }
 
   &__price {
@@ -116,24 +116,42 @@
     }
   }
 
-  &__theater,
-  &__date,
-  &__location {
-    display: flex;
-    align-items: flex-start;
-    gap: clamp(6px, 1vw, 12px);
+  &__theater {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+    word-break: break-word;
+    hyphens: auto;
+    min-width: 0;
+    width: 100%;
+  }
+
+  &__date {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: clamp(0.7rem, 1.2vw, 0.9rem);
     line-height: 1.3;
     min-width: 0;
-    overflow: hidden;
+    width: 100%;
+  }
 
-    span {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      min-width: 0;
-      flex: 1;
-    }
+  &__location {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+    word-break: break-word;
+    hyphens: auto;
+    min-width: 0;
+    width: 100%;
   }
 
   &__footer {
@@ -233,6 +251,26 @@
     &--right {
       align-items: flex-end;
       text-align: right;
+    }
+
+    > * {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+      max-width: 100%;
+      min-width: 0;
+      word-break: break-word;
+      hyphens: auto;
+    }
+
+    .card__date {
+      display: block;
+      -webkit-line-clamp: unset;
+      -webkit-box-orient: unset;
+      white-space: nowrap;
     }
   }
 }
