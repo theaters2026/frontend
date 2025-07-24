@@ -1,5 +1,5 @@
-@use '../../../../../../shared/styles/settings/breakpoints' as breakpoint;
-@use '../../../../../../shared/styles/settings/colors' as colors;
+@use '../../../../../../core/styles/settings/breakpoints' as breakpoint;
+@use '../../../../../../core/styles/settings/colors' as colors;
 .session-card {
   display: flex;
   align-items: center;

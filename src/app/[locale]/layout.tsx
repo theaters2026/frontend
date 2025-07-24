@@ -2,7 +2,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/shared/i18n/routing'
 import type { Metadata } from 'next'
-import '@/shared/styles/globals.scss'
+import '@/core/styles/globals.scss'
 import localFont from 'next/font/local'
 import { ReduxProvider } from '@/core/providers'
 
