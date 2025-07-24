@@ -17,7 +17,7 @@ export const EventList = ({
     <ul className={`${styles['events-list']} ${className || ''}`}>
       {events.map((event, index) => (
         <li
-          key={`${keyPrefix}-${event.id}`}
+          key={`${keyPrefix}-${event.externalId}`}
           className={styles['events-list__item']}
         >
           <EventCard eventData={event} />
