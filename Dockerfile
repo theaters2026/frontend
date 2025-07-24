@@ -22,4 +22,4 @@ COPY --from=builder /app/package.json ./package.json
 
 EXPOSE 3001
 
-CMD ["npm", "run", "start"]
+ENTRYPOINT ["npm", "run", "start"]
