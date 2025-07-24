@@ -12,6 +12,7 @@ import {
 import { useTranslations } from 'next-intl'
 import { EventCardData } from '@/shared/types'
 import { ticketService } from '@/core/services'
+import { useCallback } from 'react'
 
 interface EventCardProps {
   eventData: EventCardData
@@ -29,13 +30,13 @@ export const EventCard = ({ eventData }: EventCardProps) => {
     theater: eventData.theater,
   })
 
-  const handleDetailsClick = () => {
-    navigateToEvent(eventData.id)
-  }
+  const handleDetailsClick = useCallback(() => {
+    navigateToEvent(eventData.externalId)
+  }, [navigateToEvent, eventData.externalId])
 
-  const handleBuyTicketClick = () => {
+  const handleBuyTicketClick = useCallback(() => {
     ticketService.purchaseTicket(eventData, openSchedule)
-  }
+  }, [eventData, openSchedule])
 
   return (
     <article className={styles['card']}>

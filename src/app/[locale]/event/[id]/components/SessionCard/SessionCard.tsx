@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { SessionCardData } from '@/shared/types/event'
 import { Button } from '@/shared/ui'
 import {
@@ -18,7 +18,7 @@ export const SessionCard: React.FC<SessionCardProps> = ({ sessionData }) => {
   const t = useTranslations('EventDetails')
   const { openSchedule } = useTicketWidget()
 
-  const handleBuyTicket = () => {
+  const handleBuyTicket = useCallback(() => {
     const ticketData = prepareTicketData(sessionData)
 
     if (validateTicketData(ticketData)) {
@@ -28,7 +28,7 @@ export const SessionCard: React.FC<SessionCardProps> = ({ sessionData }) => {
         sessionData,
       })
     }
-  }
+  }, [sessionData, openSchedule])
 
   return (
     <div className={styles['session-card']}>
