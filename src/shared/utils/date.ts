@@ -1,10 +1,9 @@
-import { format, isValid, parseISO } from 'date-fns'
-import { DATE_FORMATS } from '@/shared/constants/date'
+import { isValid, parseISO, format } from 'date-fns'
+import { ru } from 'date-fns/locale'
 
 export function parseDate(date: string): Date | null {
   if (!date) return null
   const dateParsed = parseISO(date)
-
   const fallbackDate = new Date(date)
 
   return isValid(dateParsed)
@@ -16,7 +15,9 @@ export function parseDate(date: string): Date | null {
 
 export function formatDate(dateString: string): string {
   const date = parseDate(dateString)
-
   if (!date) return ''
-  return format(date, DATE_FORMATS.FULL)
+
+  const utcDate = new Date(dateString.replace('Z', ''))
+
+  return format(utcDate, 'd MMMM, EEEEEE, HH:mm', { locale: ru })
 }
