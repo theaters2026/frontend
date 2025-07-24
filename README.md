@@ -17,7 +17,6 @@ Follow these steps to get the project running on your local machine:
    git clone https://gitverse.ru/studentlabs/theater_platform_client
    cd theater_platform_client
 ```
-text
 
 2. **Install dependencies**
 ```bash
