@@ -1,61 +1,62 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/core/store/store'
 import { setCurrentEvent } from '@/core/store/events/eventsSlice'
 import { ShowWithParsedData } from '@/shared/types/event'
 import { useEvents } from './useEvents'
 
-export const useEventDetail = (eventId: number) => {
+interface UseEventDetailReturn {
+  event: ShowWithParsedData | null
+  loading: boolean
+  error: string | null
+  refetch: () => void
+  isNotFound: boolean
+}
+
+export const useEventDetail = (eventId: number): UseEventDetailReturn => {
   const dispatch = useDispatch()
-  const events = useSelector((state: RootState) => state.events.events)
   const currentEvent = useSelector(
     (state: RootState) => state.events.currentEvent
   )
-  const { loading, error, refetch } = useEvents()
-  const [event, setEvent] = useState<ShowWithParsedData | null>(null)
-  const [eventNotFound, setEventNotFound] = useState(false)
+  const { shows, loading, error, refetch } = useEvents()
+  const [isNotFound, setIsNotFound] = useState(false)
+
+  const foundEvent = useMemo(() => {
+    if (!eventId || eventId === 0 || shows.length === 0) return null
+
+    return (
+      shows.find((event: ShowWithParsedData) => {
+        const eventIdNumber = Number(event.id)
+        return (
+          eventIdNumber === eventId ||
+          event.externalId === eventId ||
+          Number(event.externalId) === eventId
+        )
+      }) || null
+    )
+  }, [eventId, shows])
 
   useEffect(() => {
     if (!eventId || eventId === 0) {
+      setIsNotFound(false)
       return
     }
-    if (events.length > 0) {
-      const foundEvent = events.find((event: ShowWithParsedData) => {
-        const eventIdMatches =
-          parseInt(event.id) === eventId ||
-          event.externalId === eventId ||
-          parseInt(event.externalId?.toString() || '0') === eventId
-        return eventIdMatches
-      })
 
-      if (foundEvent) {
-        setEvent(foundEvent)
-        setEventNotFound(false)
-        dispatch(setCurrentEvent(foundEvent))
-      } else {
-        setEventNotFound(true)
-      }
-    } else if (!loading) {
-      refetch()
+    if (foundEvent) {
+      dispatch(setCurrentEvent(foundEvent))
+      setIsNotFound(false)
+    } else if (!loading && shows.length > 0) {
+      setIsNotFound(true)
     }
-  }, [eventId, events, dispatch, refetch, loading])
+  }, [eventId, foundEvent, loading, shows.length, dispatch])
 
-  useEffect(() => {
-    if (
-      currentEvent &&
-      (parseInt(currentEvent.id) === eventId ||
-        currentEvent.externalId === eventId ||
-        parseInt(currentEvent.externalId?.toString() || '0') === eventId)
-    ) {
-      setEvent(currentEvent)
-      setEventNotFound(false)
-    }
-  }, [currentEvent, eventId])
+  const event = foundEvent || currentEvent
 
   return {
     event,
     loading,
-    error: error || (eventNotFound ? 'Event not found' : null),
+    error: error || (isNotFound ? 'Event not found' : null),
     refetch,
+    isNotFound,
   }
 }

@@ -1,9 +1,9 @@
-import { ShowWithParsedData } from '@/shared/types/event'
+import { Show } from '@/shared/types/event'
 import { useTranslations } from 'next-intl'
 import { EventDataService } from '@/core/services/eventDataService'
 import { formatDate } from '@/shared/utils'
 
-export const useEventData = (event: ShowWithParsedData) => {
+export const useEventData = (event: Show) => {
   const t = useTranslations('EventDetails')
 
   const eventSummary = EventDataService.getEventSummary(event)
