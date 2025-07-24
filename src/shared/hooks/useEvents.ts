@@ -1,4 +1,5 @@
-import { useEffect, useMemo } from 'react'
+// shared/hooks/useEvents.ts
+import { useEffect, useMemo, useCallback } from 'react'
 import { Show, EventCardData } from '@/shared/types/event'
 import { ParsedEventData } from '@/shared/utils/url'
 import { useAppDispatch, useAppSelector } from '@/core/store/utils/storeUtils'
@@ -7,6 +8,7 @@ import {
   selectEventsData,
   selectEventsLoading,
   selectEventsError,
+  selectEventsStatus,
 } from '@/core/store/events/eventsSlice'
 import { EventService } from '@/core/services/eventService'
 
@@ -17,8 +19,8 @@ export interface UseEventsReturn {
   loading: boolean
   error: string | null
   refetch: () => void
-  totalCount: number
-  originalCount: number
+  isSuccess: boolean
+  isEmpty: boolean
 }
 
 export const useEvents = (): UseEventsReturn => {
@@ -26,24 +28,26 @@ export const useEvents = (): UseEventsReturn => {
   const shows = useAppSelector(selectEventsData)
   const loading = useAppSelector(selectEventsLoading)
   const error = useAppSelector(selectEventsError)
-  const { totalCount, originalCount } = useAppSelector((state) => state.events)
+  const status = useAppSelector(selectEventsStatus)
 
-  const refetch = () => {
-    dispatch(fetchEventData())
-  }
-
-  useEffect(() => {
+  const refetch = useCallback(() => {
     dispatch(fetchEventData())
   }, [dispatch])
 
-  const popularEvents = useMemo(() => {
-    const popularShows = EventService.getPopularShows(shows)
-    return EventService.transformShowsToCardData(popularShows)
-  }, [shows])
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchEventData())
+    }
+  }, [dispatch, status])
 
-  const allEvents = useMemo(() => {
+  const { popularEvents, allEvents } = useMemo(() => {
+    const popularShows = EventService.getPopularShows(shows)
     const uniqueShows = EventService.getUniqueShows(shows)
-    return EventService.transformShowsToCardData(uniqueShows)
+
+    return {
+      popularEvents: EventService.transformShowsToCardData(popularShows),
+      allEvents: EventService.transformShowsToCardData(uniqueShows),
+    }
   }, [shows])
 
   return {
@@ -53,7 +57,7 @@ export const useEvents = (): UseEventsReturn => {
     loading,
     error,
     refetch,
-    totalCount,
-    originalCount,
+    isSuccess: status === 'succeeded',
+    isEmpty: shows.length === 0 && status === 'succeeded',
   }
 }
