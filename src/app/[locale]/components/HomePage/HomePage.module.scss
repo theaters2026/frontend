@@ -1,0 +1,97 @@
+@use '../../../../core/styles/settings/breakpoints' as breakpoints;
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__content {
+    width: 100%;
+    margin: clamp(30px, 8vh, 80px) auto 0;
+    padding: 0 clamp(15px, 4vw, 40px);
+    box-sizing: border-box;
+
+    @media (max-width: breakpoints.$breakpoint-sm) {
+      margin-top: 20px;
+      padding: 0 15px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-sm) and (max-width: breakpoints.$breakpoint-md) {
+      margin-top: 30px;
+      padding: 0 20px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-md) {
+      margin-top: 40px;
+      padding: 0 clamp(25px, 3vw, 40px);
+      max-width: clamp(1400px, 90vw, 1800px);
+    }
+
+    @media (min-width: 1390px) {
+      max-width: clamp(1500px, 92vw, 1900px);
+      padding: 0 clamp(28px, 3vw, 50px);
+    }
+
+    @media (min-width: 1800px) {
+      max-width: clamp(1700px, 92vw, 2100px);
+      padding: 0 clamp(30px, 3vw, 60px);
+    }
+
+    @media (min-width: 1920px) {
+      max-width: clamp(1800px, 95vw, 2300px);
+      padding: 0 clamp(30px, 3vw, 60px);
+    }
+
+    @media (min-width: 2560px) {
+      max-width: clamp(2300px, 95vw, 2800px);
+      padding: 0 clamp(40px, 3vw, 80px);
+    }
+
+    @media (min-width: 3840px) {
+      max-width: clamp(3000px, 85vw, 3600px);
+      padding: 0 clamp(60px, 2vw, 100px);
+    }
+  }
+}
+
+.popular-events,
+.events-affiche {
+  margin-bottom: clamp(40px, 8vh, 100px);
+
+  &__title {
+    margin-bottom: clamp(20px, 4vh, 60px);
+    font-size: clamp(1.3rem, 4vw, 2.5rem);
+    font-weight: 600;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    }
+
+    @media (min-width: 1920px) {
+      font-size: clamp(2rem, 3vw, 3rem);
+    }
+
+    @media (min-width: 2560px) {
+      font-size: clamp(2.5rem, 2.5vw, 3.5rem);
+    }
+
+    @media (min-width: 3840px) {
+      font-size: clamp(3rem, 2vw, 4rem);
+    }
+  }
+
+  &__item {
+    transition: transform 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(clamp(-3px, -0.5vw, -8px));
+    }
+  }
+}
+
+.popular-events {
+  @media (max-width: breakpoints.$breakpoint-md) {
+    margin-bottom: 30px;
+  }
+}

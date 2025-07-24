@@ -1,11 +1,5 @@
-import { useTranslations } from 'next-intl'
+import { HomePage } from '@/app/[locale]/components'
 
 export default function Home() {
-  const t = useTranslations('HomePage')
-
-  return (
-    <div>
-      <h1>{t('title')}</h1>
-    </div>
-  )
+  return <HomePage />
 }

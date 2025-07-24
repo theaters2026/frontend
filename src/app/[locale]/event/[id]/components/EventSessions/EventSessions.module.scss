@@ -1,0 +1,45 @@
+@use '../../../../../../core/styles/settings/breakpoints' as breakpoints;
+@use '../../../../../../core/styles/settings/colors' as colors;
+@use '../../../../../../core/styles/settings/borders' as radius;
+
+.event-sessions {
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  overflow: visible;
+  max-height: 100%;
+
+  &__title {
+    margin-bottom: clamp(0.75rem, 1.2vw, 1rem);
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-weight: 600;
+    color: colors.$primary-color-900;
+
+    @media (max-width: breakpoints.$breakpoint-sm) {
+      font-size: clamp(1.2rem, 5vw, 1.3rem);
+      margin-bottom: clamp(1rem, 4vw, 1.2rem);
+    }
+
+    @media (min-width: 1920px) {
+      font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+      margin-bottom: clamp(1rem, 1.5vw, 1.2rem);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: radius.$border-radius-small;
+    overflow: visible;
+    box-shadow: 0 clamp(2px, 0.4vw, 4px) clamp(8px, 1.5vw, 12px)
+      rgba(colors.$primary-color-900, 0.1);
+    background-color: colors.$primary-color-100;
+
+    @media (max-width: breakpoints.$breakpoint-sm) {
+      border-radius: radius.$border-radius-large;
+      box-shadow: 0 clamp(4px, 1vw, 6px) clamp(12px, 3vw, 16px)
+        rgba(colors.$primary-color-900, 0.15);
+    }
+  }
+}

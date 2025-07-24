@@ -39,5 +39,9 @@ export const parseDetailedUrl = (
     }
   }
 
+  console.error(
+    'parseDetailedUrl: URL не соответствует ни одному паттерну:',
+    detailedUrl
+  )
   return null
 }

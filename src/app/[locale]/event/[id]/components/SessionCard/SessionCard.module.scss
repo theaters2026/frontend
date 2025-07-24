@@ -1,0 +1,205 @@
+@use '../../../../../../core/styles/settings/breakpoints' as breakpoint;
+@use '../../../../../../core/styles/settings/colors' as colors;
+.session-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-height: 104px;
+  padding-block: 1rem;
+  border-bottom: 1px solid colors.$primary-color-900;
+
+  @media (max-width: breakpoint.$breakpoint-lg) {
+    padding-inline: 0.5rem;
+  }
+
+  &:last-child::after {
+    display: none;
+  }
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+
+    @media (max-width: breakpoint.$breakpoint-sm) {
+      flex: 1.2;
+    }
+  }
+
+  &__center {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0 16px;
+
+    @media (max-width: breakpoint.$breakpoint-sm) {
+      padding: 0 8px;
+    }
+  }
+
+  &__right {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__date {
+    font-size: 1.25rem;
+    font-weight: 600;
+    @media (max-width: breakpoint.$breakpoint-sm) {
+      font-size: 13px;
+    }
+  }
+
+  &__location {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__location-name {
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @media (max-width: breakpoint.$breakpoint-sm) {
+      font-size: 12px;
+    }
+  }
+
+  &__address {
+    color: #6c757d;
+    font-size: 11px;
+    line-height: 1.2;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: breakpoint.$breakpoint-sm) {
+      font-size: 10px;
+    }
+  }
+
+  &__price {
+    text-align: center;
+
+    @media (max-width: breakpoint.$breakpoint-sm) {
+      font-size: 13px;
+    }
+  }
+
+  &__count {
+    color: #6c757d;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+
+    @media (max-width: breakpoint.$breakpoint-sm) {
+      font-size: 10px;
+    }
+  }
+
+  &__button {
+    font-size: 8px;
+    padding: 6px 12px;
+    min-width: 60px;
+
+    @media (max-width: breakpoint.$breakpoint-sm) {
+      font-size: 11px;
+      padding: 2px 4px;
+      min-width: 40px;
+    }
+  }
+
+  @media (max-width: breakpoint.$breakpoint-xs) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+
+    &__left,
+    &__center,
+    &__right {
+      flex: none;
+    }
+
+    &__center {
+      padding: 0;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__right {
+      justify-content: center;
+    }
+
+    &__location-name,
+    &__address {
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+    }
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+    min-height: auto;
+
+    &__left {
+      order: 1;
+      flex: none;
+    }
+
+    &__center {
+      order: 2;
+      flex: none;
+      padding: 0;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    &__right {
+      order: 3;
+      flex: none;
+      justify-content: center;
+    }
+
+    &__price {
+      text-align: left;
+    }
+
+    &__count {
+      text-align: right;
+    }
+
+    &__location-name,
+    &__address {
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+    }
+
+    &__button {
+      width: 100%;
+      min-width: auto;
+      font-size: 12px;
+      padding: 8px 16px;
+    }
+  }
+}

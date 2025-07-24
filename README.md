@@ -10,27 +10,73 @@
 
 Follow these steps to get the project running on your local machine:
 
-### 1. Clone the repository
+### Option 1: Local Development
+
+1. **Clone the repository**
 ```bash
- git clone https://gitverse.ru/studentlabs/theater_platform_client
- cd theater_platform_client
+   git clone https://gitverse.ru/studentlabs/theater_platform_client
+   cd theater_platform_client
 ```
-### 2. Install dependencies
+text
+
+2. **Install dependencies**
 ```bash
-pnpm install
+   pnpm install
 ```
 
-### 3. Set up environment variables
-``` bash
-cp .env.local.example .env.local
-# Edit .env.local with your configuration
+3. **Set up environment variables**
+```bash
+ cp .env.local.example .env.local
+ #Edit .env.local with your configuration
 ```
-### 4. Start the development server
-``` bash
-pnpm dev
+
+4. **Start the development server**
+```bash
+   pnpm dev
 ```
-### 5. Open your browser
-Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
+
+5. **Open your browser**  
+   Navigate to [http://localhost:3000](http://localhost:3000/) to see the application.
+
+---
+
+### Option 2: Docker Development
+
+1. **Clone the repository**
+```bash
+   git clone https://gitverse.ru/studentlabs/theater_platform_client
+   cd theater_platform_client
+```
+
+2. **Set up environment variables**
+```bash
+   cp .env.local.example .env.local
+   #Edit .env.local with your configuration
+```
+
+3. **Build and start with Docker Compose**
+```bash
+   docker-compose up --build
+```
+
+4. **Open your browser**  
+   Navigate to [http://localhost:3001](http://localhost:3001/) to see the application.
+
+---
+
+### Docker Commands
+
+#### Development mode:
+```bash
+#Start development server
+docker-compose up --build
+
+#Run in background
+docker-compose up -d --build
+
+#Stop containers
+docker-compose down
+```
 ## 📋 Available Scripts
 
 | Command | Description |
@@ -62,67 +108,26 @@ src/
 ├── app/                    # Next.js App Router
 │   └── [locale]/           # Internationalization
 │       ├── login/          # Login page
-│       │   ├── components/ # Login page components
-│       │   │   ├── LoginForm/
-│       │   │   │   ├── LoginForm.tsx
-│       │   │   │   └── LoginForm.schema.ts
-│       │   │   └── LoginPage/
-│       │   │       ├── LoginPage.tsx
-│       │   │       └── LoginPage.module.scss
-│       │   └── page.tsx
+│       ├── event/          # Event pages
 │       ├── register/       # Registration page
-│       │   ├── components/ # Registration page components
-│       │   │   ├── RegisterForm/
-│       │   │   └── RegisterPage/
-│       │   │       ├── RegisterPage.tsx
-│       │   │       └── RegisterPage.module.scss
-│       │   └── page.tsx
 │       ├── layout.tsx      # Localized layout
 │       └── page.tsx        # Home page
 ├── core/                   # Core application logic
 │   ├── api/                # API configuration and methods
 │   ├── providers/          # App providers (Redux)
+│   ├── styles/             # Global styles
+│   ├── ui/                 # Reusable UI components
 │   ├── services/           # Business logic services (e.g., AuthService)
 │   └── store/              # Redux store
-│       ├── utils/          # Store utilities
-│       │   └── storeUtils.ts
-│       └── store.ts
+
 ├── shared/                 # Shared resources
 │   ├── constants/          # Application constants
-│   │   ├── api.ts
-│   │   ├── auth.ts
-│   │   ├── ticketManager.ts
-│   │   ├── ui.ts
-│   │   └── index.ts
 │   ├── hooks/              # Custom React hooks
-│   │   ├── useNavigation.ts
-│   │   ├── useTicketWidget.ts
-│   │   └── index.ts
 │   ├── i18n/               # Internationalization
-│   │   ├── locales/        # Translation files
-│   │   │   ├── en.json
-│   │   │   └── ru.json
-│   │   ├── navigation.ts
-│   │   ├── request.ts
-│   │   └── routing.ts
-│   ├── styles/             # Global styles
-│   │   └── globals.scss
+│   ├── schemas/            # Schemas
 │   ├── types/              # TypeScript type definitions
-│   │   ├── ticketManager.ts
-│   │   └── index.ts
 │   ├── ui/                 # Reusable UI components
-│   │   ├── Button.tsx
-│   │   ├── Form.tsx
-│   │   ├── Input.tsx
-│   │   ├── Label.tsx
-│   │   └── index.ts
 │   └── utils/              # Utility functions
-│       ├── date.ts
-│       ├── number.ts
-│       ├── price.ts
-│       ├── styles.ts
-│       ├── url.ts
-│       └── index.ts
 └── middleware.ts           # Next.js middleware
 
 ```

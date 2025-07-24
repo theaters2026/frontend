@@ -1,25 +1,55 @@
 {
   "HomePage": {
-    "title": "Platform of independent theatres"
+    "title": "Independent Theater Platform",
+    "sections": {
+      "popular": {
+        "title": "Popular"
+      },
+      "affiche": {
+        "title": "Events"
+      }
+    }
+  },
+  "EventCard": {
+    "details": "Details",
+    "buyTicket": "Buy Ticket",
+    "currency": "$"
+  },
+  "EventHeader": {
+    "searchPlaceholder": "Search...",
+    "title": "independent theater platform"
+  },
+  "EventDetails": {
+    "detailInfo": "Event Details",
+    "upcomingSessions": "Upcoming Sessions",
+    "buyTicket": "Buy Ticket",
+    "minutes": "minutes",
+    "dateNotSpecified": "Date not specified",
+    "locationNotSpecified": "Location not specified",
+    "addressNotSpecified": "Address not specified",
+    "currency": "$",
+    "ageLimit": "{age}+",
+    "loading": "Loading...",
+    "notFound": "Event not found",
+    "back": "Back"
   },
   "Login": {
     "header": "Theater Platform - Sign In",
-    "footer": "© 2025 Platform of independent theatres",
-    "title": "Login",
+    "footer": "© 2025 Independent Theater Platform",
+    "title": "Sign In",
     "userNameText": "Username",
     "userNamePlaceholder": "Enter username",
     "passwordText": "Password",
     "passwordPlaceholder": "Enter password",
     "emailText": "Email",
     "emailPlaceholder": "Enter email",
-    "buttonSubmit": "Login",
-    "loading": "Logging in..."
+    "buttonSubmit": "Sign In",
+    "loading": "Signing in..."
   },
   "Register": {
-    "header": "Theater Platform - Sign Up",
-    "footer": "© 2025 Platform of independent theatres",
-
-    "title": "Registration",
+    "header": "Theater Platform - Registration",
+    "footer": "© 2025 Independent Theater Platform",
+    "title": "Sign Up",
     "usernameText": "Username",
     "usernamePlaceholder": "Enter username",
     "emailText": "Email",
@@ -28,14 +58,108 @@
     "passwordPlaceholder": "Enter password",
     "confirmPasswordText": "Confirm Password",
     "confirmPasswordPlaceholder": "Repeat password",
-    "buttonSubmit": "Register",
+    "buttonSubmit": "Sign Up",
     "registering": "Registering..."
   },
   "Validation": {
-    "MinErrorMessage": "Field is required",
-    "MaxErrorMessage": "Value is too long",
-    "PasswordMinErrorMessage": "Password must be at least 6 characters",
-    "emailErrorMessage": "Invalid email format",
+    "MinErrorMessage": "This field is required",
+    "MaxErrorMessage": "Value too long",
+    "PasswordMinErrorMessage": "Password must contain at least 6 characters",
+    "emailErrorMessage": "Invalid email",
     "passwordsDoNotMatch": "Passwords do not match"
+  },
+  "Common": {
+    "priceToBeConfirmed": "Price to be confirmed",
+    "defaultValues": {
+      "dateNotSpecified": "Date not specified",
+      "locationNotSpecified": "Location not specified",
+      "theaterNotSpecified": "Theater not specified"
+    }
+  },
+  "CreateEvent": {
+    "title": "Create Event",
+    "metadata": {
+      "title": "Create Event",
+      "description": "Create new theater event"
+    },
+    "fields": {
+      "eventName": "Event Name",
+      "ticketPrice": "Ticket Price",
+      "ageRating": "Age Rating",
+      "eventDate": "Date",
+      "eventTime": "Time",
+      "venue": "Venue",
+      "theaterName": "Theater Name",
+      "image": "Image",
+      "description": "Description"
+    },
+    "preview": {
+      "title": "Preview",
+      "imageNotSelected": "No image selected",
+      "eventNamePlaceholder": "Event name",
+      "theaterNamePlaceholder": "Theater name",
+      "venuePlaceholder": "Venue",
+      "dateNotSpecified": "Date not specified"
+    },
+    "placeholders": {
+      "eventName": "Event name",
+      "ticketPrice": "800",
+      "ageRating": "0+",
+      "eventTime": "18:00",
+      "eventDate": "01/01/2025",
+      "venue": "Enter venue",
+      "theaterName": "Enter theater name",
+      "image": "Choose file",
+      "description": "Great event"
+    },
+    "buttons": {
+      "create": "Create Event",
+      "creating": "Creating..."
+    },
+    "messages": {
+      "success": "Event created successfully!",
+      "error": "Error occurred while creating event",
+      "validation": "Please check form completion",
+      "imageRequired": "Please select an image",
+      "fileTooLarge": "File size should not exceed 5MB",
+      "invalidFileType": "Please select an image"
+    },
+    "validation": {
+      "eventName": {
+        "required": "Event name is required",
+        "maxLength": "Event name must not exceed 100 characters"
+      },
+      "ticketPrice": {
+        "required": "Ticket price is required",
+        "invalid": "Enter valid price",
+        "min": "Price cannot be negative",
+        "max": "Ticket price cannot exceed $1000"
+      },
+      "ageRating": {
+        "required": "Age rating is required"
+      },
+      "eventDate": {
+        "required": "Event date is required",
+        "invalid": "Invalid date format",
+        "future": "Event date must be in the future"
+      },
+      "eventTime": {
+        "required": "Event time is required",
+        "format": "Invalid time format"
+      },
+      "venue": {
+        "required": "Venue is required",
+        "maxLength": "Venue name is too long"
+      },
+      "theaterName": {
+        "required": "Theater name is required",
+        "maxLength": "Theater name must not exceed 100 characters"
+      },
+      "description": {
+        "required": "Description is required",
+        "minLength": "Description must contain at least 10 characters",
+        "maxLength": "Description is too long"
+      }
+    }
   }
 }
