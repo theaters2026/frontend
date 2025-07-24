@@ -1,5 +1,6 @@
 import { isValid, parseISO, format } from 'date-fns'
 import { ru } from 'date-fns/locale'
+import { DATE_FORMATS } from '@/shared/constants'
 
 export function parseDate(date: string | Date | undefined): Date | null {
   if (!date) return null
@@ -21,14 +22,14 @@ export function parseDate(date: string | Date | undefined): Date | null {
 export function formatDate(dateString: string | Date | undefined): string {
   const date = parseDate(dateString)
   if (!date) return ''
-  return format(date, 'd MMMM, EEEEEE, HH:mm', { locale: ru })
+  return format(date, DATE_FORMATS.FULL_WITH_TIME, { locale: ru })
 }
 
 export function formatDateOnly(dateString: string | Date | undefined): string {
   const date = parseDate(dateString)
   if (!date) return ''
 
-  return format(date, 'd MMMM yyyy', { locale: ru })
+  return format(date, DATE_FORMATS.DATE_ONLY, { locale: ru })
 }
 
 export function formatTimeOnly(time: string | undefined): string {

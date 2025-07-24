@@ -10,3 +10,8 @@ export const API_CONSTANTS = {
     MAX_EVENTS: 50,
   },
 } as const
+
+export const API_TIMEOUTS = {
+  DEFAULT: 10000,
+  EXTENDED: 15000,
+} as const

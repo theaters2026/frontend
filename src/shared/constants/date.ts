@@ -1,7 +1,6 @@
 export const DATE_FORMATS = {
-  FULL: 'dd.MM.yyyy HH:mm',
-  EVENT_CARD: 'd MMMM, EEEEEE, HH:mm',
-  SHORT_DATE: 'd MMMM',
+  FULL_WITH_TIME: 'd MMMM, EEEEEE, HH:mm',
+  DATE_ONLY: 'd MMMM yyyy',
+  ISO_DATE: 'yyyy-MM-dd',
   TIME_ONLY: 'HH:mm',
-  DAY_ONLY: 'EEEEEE',
 } as const

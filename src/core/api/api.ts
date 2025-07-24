@@ -1,6 +1,10 @@
 import axios, { AxiosInstance, AxiosError } from 'axios'
+import { API_TIMEOUTS } from '@/shared/constants'
 
-const createHttpClient = (baseURL: string, timeout = 10000): AxiosInstance => {
+const createHttpClient = (
+  baseURL: string,
+  timeout = API_TIMEOUTS.DEFAULT
+): AxiosInstance => {
   const client = axios.create({
     baseURL,
     timeout,
@@ -26,6 +30,5 @@ const createHttpClient = (baseURL: string, timeout = 10000): AxiosInstance => {
 
 export const localApi = createHttpClient(process.env.NEXT_PUBLIC_LOCAL_API_URL!)
 export const afishaApi = createHttpClient(
-  process.env.NEXT_PUBLIC_AFISHA_API_URL!,
-  15000
+  process.env.NEXT_PUBLIC_AFISHA_API_URL!
 )

@@ -1,4 +1,3 @@
-// shared/hooks/useEvents.ts
 import { useEffect, useMemo, useCallback } from 'react'
 import { Show, EventCardData } from '@/shared/types/event'
 import { ParsedEventData } from '@/shared/utils/url'
