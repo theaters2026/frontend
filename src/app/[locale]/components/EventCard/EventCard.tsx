@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { Button } from '@/shared/ui'
 import styles from './EventCard.module.scss'
-import { UI_CONSTANTS } from '@/shared/constants'
+import { CURRENCY } from '@/shared/constants'
 import {
   useNavigation,
   useEventCard,
@@ -52,7 +52,7 @@ export const EventCard = ({ eventData }: EventCardProps) => {
           />
         </figure>
         <span className={styles['card__price']}>
-          {eventData.price} {UI_CONSTANTS.CURRENCY_SYMBOL}
+          {eventData.price} {CURRENCY.SYMBOL}
         </span>
         <span className={styles['card__age-rating']}>
           {eventData.ageRating}

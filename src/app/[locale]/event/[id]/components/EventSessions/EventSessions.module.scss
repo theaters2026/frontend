@@ -1,6 +1,6 @@
-@use '../../../../../../shared/styles/settings/breakpoints' as breakpoints;
-@use '../../../../../../shared/styles/settings/colors' as colors;
-@use '../../../../../../shared/styles/settings/borders' as radius;
+@use '../../../../../../core/styles/settings/breakpoints' as breakpoints;
+@use '../../../../../../core/styles/settings/colors' as colors;
+@use '../../../../../../core/styles/settings/borders' as radius;
 
 .event-sessions {
   max-width: 100%;

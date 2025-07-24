@@ -15,6 +15,8 @@ const buttonVariants = cva(
       variant: {
         default:
           'bg-secondary-800 hover:bg-secondary-700 active:bg-secondary-900 disabled:bg-primary-200 disabled:text-secondary-900 text-primary-100',
+        outline:
+          'border border-primary-300 bg-transparent text-primary-800 hover:bg-primary-100 hover:text-primary-900',
       },
       IsIconButton: {
         default: UI_CONSTANTS.BUTTON.PADDING.DEFAULT,

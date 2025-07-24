@@ -3,11 +3,11 @@
 import * as React from 'react'
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { cva, type VariantProps } from 'class-variance-authority'
-
 import { cn } from '@/shared/utils'
+import { UI_CONSTANTS } from '@/shared/constants'
 
 const labelVariants = cva(
-  'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
+  `${UI_CONSTANTS.LABEL.TEXT_SIZE} ${UI_CONSTANTS.LABEL.FONT_WEIGHT} ${UI_CONSTANTS.LABEL.LINE_HEIGHT} ${UI_CONSTANTS.LABEL.DISABLED}`
 )
 
 const Label = React.forwardRef<
