@@ -10,27 +10,73 @@
 
 Follow these steps to get the project running on your local machine:
 
-### 1. Clone the repository
+### Option 1: Local Development
+
+1. **Clone the repository**
 ```bash
- git clone https://gitverse.ru/studentlabs/theater_platform_client
- cd theater_platform_client
+   git clone https://gitverse.ru/studentlabs/theater_platform_client
+   cd theater_platform_client
 ```
-### 2. Install dependencies
+text
+
+2. **Install dependencies**
 ```bash
-pnpm install
+   pnpm install
 ```
 
-### 3. Set up environment variables
-``` bash
-cp .env.local.example .env.local
-# Edit .env.local with your configuration
+3. **Set up environment variables**
+```bash
+ cp .env.local.example .env.local
+ #Edit .env.local with your configuration
 ```
-### 4. Start the development server
-``` bash
-pnpm dev
+
+4. **Start the development server**
+```bash
+   pnpm dev
 ```
-### 5. Open your browser
-Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
+
+5. **Open your browser**  
+   Navigate to [http://localhost:3000](http://localhost:3000/) to see the application.
+
+---
+
+### Option 2: Docker Development
+
+1. **Clone the repository**
+```bash
+   git clone https://gitverse.ru/studentlabs/theater_platform_client
+   cd theater_platform_client
+```
+
+2. **Set up environment variables**
+```bash
+   cp .env.local.example .env.local
+   #Edit .env.local with your configuration
+```
+
+3. **Build and start with Docker Compose**
+```bash
+   docker-compose up --build
+```
+
+4. **Open your browser**  
+   Navigate to [http://localhost:3001](http://localhost:3001/) to see the application.
+
+---
+
+### Docker Commands
+
+#### Development mode:
+```bash
+#Start development server
+docker-compose up --build
+
+#Run in background
+docker-compose up -d --build
+
+#Stop containers
+docker-compose down
+```
 ## 📋 Available Scripts
 
 | Command | Description |
