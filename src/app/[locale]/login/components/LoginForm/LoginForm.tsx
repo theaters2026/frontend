@@ -9,6 +9,7 @@ import { Input } from '@/shared/ui/Input'
 import { useTranslations } from 'next-intl'
 import { login } from '@/core/api/login/apiLogin'
 import { AuthService } from '@/core/services/authService'
+import { signIn } from 'next-auth/react'
 
 export const LoginForm: React.FC = () => {
   const t = useTranslations('Login')
@@ -24,13 +25,17 @@ export const LoginForm: React.FC = () => {
   })
 
   const onSubmit = async (data: LoginFormSchema) => {
-    try {
-      const response = await AuthService.login(data)
-      if (response) {
-        return null
-      }
-    } catch (error) {
-      console.error('Login failed:', error)
+    const result = await signIn('credentials', {
+      redirect: false,
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    })
+
+    if (result?.error) {
+      console.log('не успешно')
+    } else if (result?.ok) {
+      console.log('успешно')
     }
   }
 

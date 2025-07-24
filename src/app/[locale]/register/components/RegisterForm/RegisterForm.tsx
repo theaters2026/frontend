@@ -27,6 +27,7 @@ export const RegisterForm: React.FC = () => {
     try {
       const response = await AuthService.register(data)
       if (response) {
+        console.log(response)
         return null
       }
     } catch (error) {
