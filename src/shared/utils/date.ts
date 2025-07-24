@@ -19,10 +19,13 @@ export function parseDate(date: string | Date | undefined): Date | null {
       : null
 }
 
-export function formatDate(dateString: string | Date | undefined): string {
+export function formatDate(dateString: string): string {
   const date = parseDate(dateString)
   if (!date) return ''
-  return format(date, DATE_FORMATS.FULL_WITH_TIME, { locale: ru })
+
+  const utcDate = new Date(dateString.replace('Z', ''))
+
+  return format(utcDate, DATE_FORMATS.FULL_WITH_TIME, { locale: ru })
 }
 
 export function formatDateOnly(dateString: string | Date | undefined): string {
