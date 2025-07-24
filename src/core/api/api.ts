@@ -1,17 +1,31 @@
-import axios, { AxiosInstance } from 'axios'
+import axios, { AxiosInstance, AxiosError } from 'axios'
 
-export const localApi: AxiosInstance = axios.create({
-  baseURL: process.env['NEXT_PUBLIC_LOCAL_API_URL'],
-  timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
+const createHttpClient = (baseURL: string, timeout = 10000): AxiosInstance => {
+  const client = axios.create({
+    baseURL,
+    timeout,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
 
-export const afishaApi: AxiosInstance = axios.create({
-  baseURL: process.env['NEXT_PUBLIC_AFISHA_API_URL'],
-  timeout: 15000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
+  client.interceptors.response.use(
+    (response) => response,
+    (error: AxiosError) => {
+      console.error('HTTP Error:', {
+        url: error.config?.url,
+        status: error.response?.status,
+        message: error.message,
+      })
+      return Promise.reject(error)
+    }
+  )
+
+  return client
+}
+
+export const localApi = createHttpClient(process.env.NEXT_PUBLIC_LOCAL_API_URL!)
+export const afishaApi = createHttpClient(
+  process.env.NEXT_PUBLIC_AFISHA_API_URL!,
+  15000
+)
