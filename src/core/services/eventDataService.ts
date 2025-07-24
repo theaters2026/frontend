@@ -1,21 +1,21 @@
-import { ShowWithParsedData } from '@/shared/types/event'
+import { Show } from '@/shared/types/event'
 
 export class EventDataService {
-  static getFirstSession(event: ShowWithParsedData) {
+  static getFirstSession(event: Show) {
     return event.events?.[0] || null
   }
 
-  static getEventDate(event: ShowWithParsedData): string | null {
+  static getEventDate(event: Show): string | null {
     const firstSession = this.getFirstSession(event)
     return firstSession?.date || null
   }
 
-  static getLocationName(event: ShowWithParsedData): string | null {
+  static getLocationName(event: Show): string | null {
     const firstSession = this.getFirstSession(event)
-    return firstSession?.building?.name || null
+    return firstSession?.locationName || firstSession?.building?.name || null
   }
 
-  static getEventSummary(event: ShowWithParsedData) {
+  static getEventSummary(event: Show) {
     return {
       firstSession: this.getFirstSession(event),
       eventDate: this.getEventDate(event),
