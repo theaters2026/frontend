@@ -1,6 +1,6 @@
 import * as React from 'react'
-
 import { cn } from '@/shared/utils'
+import { UI_CONSTANTS } from '@/shared/constants'
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
   ({ className, type, ...props }, ref) => {
@@ -8,7 +8,13 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
       <input
         type={type}
         className={cn(
-          'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+          `${UI_CONSTANTS.COMMON.FLEX} ${UI_CONSTANTS.INPUT.HEIGHT} ${UI_CONSTANTS.COMMON.FULL_WIDTH} 
+          ${UI_CONSTANTS.INPUT.BORDER_RADIUS} ${UI_CONSTANTS.INPUT.BORDER} ${UI_CONSTANTS.INPUT.BACKGROUND} 
+          ${UI_CONSTANTS.INPUT.PADDING} ${UI_CONSTANTS.INPUT.TEXT_SIZE.BASE} ${UI_CONSTANTS.INPUT.SHADOW} 
+          ${UI_CONSTANTS.INPUT.TRANSITION}
+          ${UI_CONSTANTS.INPUT.FILE.BORDER} ${UI_CONSTANTS.INPUT.FILE.BACKGROUND} ${UI_CONSTANTS.INPUT.FILE.TEXT}
+          ${UI_CONSTANTS.INPUT.PLACEHOLDER} ${UI_CONSTANTS.INPUT.FOCUS} ${UI_CONSTANTS.INPUT.DISABLED} 
+          ${UI_CONSTANTS.INPUT.TEXT_SIZE.MEDIUM}`,
           className
         )}
         ref={ref}
