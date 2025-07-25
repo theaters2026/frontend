@@ -13,7 +13,7 @@ interface TextFieldProps<T extends FieldValues> {
   name: FieldPath<T>
   label: string
   placeholder: string
-  type?: 'text' | 'time'
+  type?: 'text' | 'password' | 'email' | 'time'
 }
 
 export const TextField = <T extends FieldValues>({
