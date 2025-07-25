@@ -1,18 +1,15 @@
 'use client'
 
-import { Button } from '@/shared/ui'
 import { useForm } from 'react-hook-form'
-import { LoginFormSchema } from './LoginForm.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Form } from '@/shared/ui/Form'
-import { Input } from '@/shared/ui/Input'
+import { LoginFormSchema } from './LoginForm.schema'
 import { useTranslations } from 'next-intl'
-import { login } from '@/core/api/login/apiLogin'
 import { AuthService } from '@/core/services/authService'
+import { AuthForm } from '@/core/ui/Forms/AuthForm'
+import { TextField } from '@/core/ui/FormFields'
 
 export const LoginForm: React.FC = () => {
   const t = useTranslations('Login')
-  const tValidation = useTranslations('Validation')
 
   const form = useForm<LoginFormSchema>({
     resolver: zodResolver(LoginFormSchema),
@@ -25,70 +22,45 @@ export const LoginForm: React.FC = () => {
 
   const onSubmit = async (data: LoginFormSchema) => {
     try {
-      const response = await AuthService.login(data)
-      if (response) {
-        return null
-      }
+      await AuthService.login(data)
     } catch (error) {
       console.error('Login failed:', error)
     }
   }
 
+  const fields = (
+    <>
+      <TextField
+        control={form.control}
+        name="username"
+        label={t('userNameText')}
+        placeholder={t('userNamePlaceholder')}
+      />
+      <TextField
+        control={form.control}
+        name="password"
+        label={t('passwordText')}
+        type="password"
+        placeholder={t('passwordPlaceholder')}
+      />
+      <TextField
+        control={form.control}
+        name="email"
+        label={t('emailText')}
+        type="email"
+        placeholder={t('emailPlaceholder')}
+      />
+    </>
+  )
+
   return (
-    <div>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div>
-            <p>{t('userNameText')}</p>
-            <Input
-              id="username"
-              placeholder={t('userNamePlaceholder')}
-              {...form.register('username')}
-            />
-            {form.formState.errors.username && (
-              <p>
-                {tValidation(form.formState.errors.username.message as string)}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <p>{t('passwordText')}</p>
-            <Input
-              id="password"
-              type="password"
-              placeholder={t('passwordPlaceholder')}
-              {...form.register('password')}
-            />
-            {form.formState.errors.password && (
-              <p>
-                {tValidation(form.formState.errors.password.message as string)}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <p>{t('emailText')}</p>
-            <Input
-              id="email"
-              type="email"
-              placeholder={t('emailPlaceholder')}
-              {...form.register('email')}
-            />
-            {form.formState.errors.email && (
-              <p>
-                {tValidation(form.formState.errors.email.message as string)}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <Button type="submit" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? t('loading') : t('buttonSubmit')}
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </div>
+    <AuthForm
+      form={form}
+      onSubmit={onSubmit}
+      fields={fields}
+      submitText={t('buttonSubmit')}
+      loadingText={t('loading')}
+      isLoading={form.formState.isSubmitting}
+    />
   )
 }
