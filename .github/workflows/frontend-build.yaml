@@ -12,6 +12,11 @@ jobs:
       image-name: ${{ github.repository }}/app
     secrets:
       personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      NEXT_PUBLIC_LOCAL_API_URL: '${{ secrets.NEXT_PUBLIC_LOCAL_API_URL }}'
+      NEXT_PUBLIC_AFISHA_API_URL: '${{ secrets.NEXT_PUBLIC_AFISHA_API_URL }}'
+      NEXT_PUBLIC_IMAGES_HOSTNAME: '${{ secrets.NEXT_PUBLIC_IMAGES_HOSTNAME }}'
+      NEXT_PUBLIC_TICKET_MANAGER_SCRIPT_URL: '${{ secrets.NEXT_PUBLIC_TICKET_MANAGER_SCRIPT_URL }}'
+      NEXT_PUBLIC_TICKET_MANAGER_WIDGET_ID: '${{ secrets.NEXT_PUBLIC_TICKET_MANAGER_WIDGET_ID }}'
 
   trigger-cleanup:
     needs: [trigger-build]
